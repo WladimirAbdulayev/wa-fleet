@@ -1,0 +1,33 @@
+.item-container{
+  border: white solid 1px;
+  border-radius: 0.8em;  
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+}
+
+.primary-text {
+  font-weight: 300;
+  text-align: left;
+}
+
+.secondary-text {
+  font-size: 0.7em;
+  font-weight: 200;
+  color: lightslategray;
+  text-align: left;
+}
+
+.date-text {
+  font-size: 2em;
+  font-weight: 600;
+  color: greenyellow;
+  flex:1;
+}
+
+
+.text-container {
+  flex:3;
+}

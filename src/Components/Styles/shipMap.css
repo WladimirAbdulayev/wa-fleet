@@ -1,0 +1,49 @@
+.ship-map-container{
+  border: white solid 1px;
+  background: url('map.png');
+  background-repeat: no-repeat;
+  background-clip: unset;
+  width: 70%;
+  height: 670px;
+  border-radius: 0.8em;  
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+  margin: 10px;
+  display: flex;
+  color: white;
+  font-size: 0.8em;
+  
+}
+
+.ship-map-primary-text {
+  font-weight: 300;
+  text-align: left;
+}
+
+.my-div-icon{
+background-color: red;
+width: 200px;
+height: 200px;
+
+}
+
+.leaflet-div-icon {
+  background-color: transparent;
+}
+
+.fa{
+  background-color: rgb(105, 59, 165);
+}
+
+.leaflet-container {
+  background: #ddd;
+  outline: 0;
+}
+
+.ship-marker{
+border: transparent;
+}
+
+.fa-city{
+  color: blue;
+}

@@ -1,0 +1,15 @@
+.man-container
+{
+  display: flex;
+  flex-direction: column;
+    border: white solid 1px;
+    border-radius: 0.8em;  
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+   margin: 5px;
+   width: 200px;
+   overflow: hidden;
+}
+.man-image-s{
+  height: 250px;
+}

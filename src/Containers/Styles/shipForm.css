@@ -1,0 +1,43 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  border: white solid 0.5px;
+  border-radius: 0.8em;  
+  width: 20%;
+  min-width: 300px;
+  box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.form-text {
+  padding: 4px;
+  margin: 4px;
+  background-color: grey;
+  color: white;
+}
+
+.valid,
+.invalid {
+  border: 0;
+  color: white;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+}
+
+.valid {
+  background-color: #ff7b0f;
+  cursor: pointer;
+}
+
+.form-text {
+  margin: 10 px;
+  border: 0;
+  border-radius: 0.2em;
+  color: white;
+  background-color: #529c35a4;
+  cursor: pointer;
+}

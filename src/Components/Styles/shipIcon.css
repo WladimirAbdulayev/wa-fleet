@@ -1,0 +1,25 @@
+.ship-icon-container {
+  width: 100px;
+  height: 100px;
+  color:white;
+  position: relative;
+  top: 60%;
+  left: 50%;
+}
+
+.ship-icon-image-s{
+  width: 100px;
+  height: 30px;
+}
+
+.ship-icon-primary-text{
+  font-size: 1em;
+}
+
+.ship-marker{
+  border: transparent;
+}
+
+.leaflet-div-icon {
+  border: 0 transparent;
+}

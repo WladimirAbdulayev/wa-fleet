@@ -1,0 +1,6 @@
+.men-list-container{
+  display: flex;
+  width: 95vh;
+  min-width: 400px;
+  flex-wrap: wrap;
+}

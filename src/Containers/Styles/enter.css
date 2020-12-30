@@ -1,0 +1,96 @@
+.enter-container {
+  width: 97%;
+  padding: 30px;
+}
+
+.enter-header{
+  height: 84vh;
+  background-image: linear-gradient( 
+    to right bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.8) ) , 
+    url('../../Assets/deco/bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0,100% 0,100% 78vh, 0 100%);
+  position: relative;
+}
+
+.enter-fleet-icon-box{
+  position: absolute;
+  top: 26px;
+  left: 26px;
+}
+
+.enter-fleet-icon{
+  height: 50px;
+}
+
+.enter-heading-primary{
+  color: white;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 30px;
+}
+
+.enter-heading-primary-main{
+  display: block;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 60px;
+  animation: moveInLeft 1s ease-out;
+}
+
+.enter-heading-primary-sec{
+  display: block;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  animation: moveInRight 1s ease-out;
+}
+
+.enter-text-box{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.maintools-box {
+  transform: translate(-5%);
+}
+
+.enter-button-box{
+  margin-top: 20px;
+  position: absolute;
+  transform: translate(70%);
+}
+
+
+@keyframes moveInLeft{
+  0%{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80%{
+    transform: translate(10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+  @keyframes moveInRight{
+  0%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80%{
+    transform: translate(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0);
+  }
+}

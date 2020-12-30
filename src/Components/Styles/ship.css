@@ -1,0 +1,63 @@
+.ship-container
+{
+  display: flex;
+  flex-direction: column;
+    border: white solid 1px;
+    border-radius: 0.8em;  
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+    margin: 10px;
+   padding: 20px;
+}
+
+.ship-title-container
+{
+  flex: 1;
+}
+
+.ship-image-container
+{
+  flex: 4;
+  position: relative;
+  min-width: 290px;
+  min-height: 120px;
+}
+
+.ship-image-s {
+  position: absolute;
+  background-color: transparent;
+  width: 280px;
+  bottom: 0;
+  padding-top: 10px;
+}
+
+.ship-navbar-container{
+  margin-top: 10px;
+  flex: 1;
+}
+
+.date-text {
+  font-size: 2em;
+  font-weight: 600;
+  color: greenyellow;
+  flex:1;
+}
+
+.text-container {
+  flex:3;
+}
+
+.fa-bell{
+  color: red;
+}
+
+.ship-primary-text{
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.ship-secondary-text{
+  font-size: 0.7em;
+  font-weight: 600;
+  color: var(--c2);
+}
