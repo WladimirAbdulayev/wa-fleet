@@ -34,6 +34,9 @@
 .ship-navbar-container{
   margin-top: 10px;
   flex: 1;
+  display: flex;
+  height: 26px;
+  width: 96%; 
 }
 
 .date-text {
@@ -61,3 +64,4 @@
   font-weight: 600;
   color: var(--c2);
 }
+

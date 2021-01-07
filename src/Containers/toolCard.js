@@ -5,7 +5,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+
 import Typography from "@material-ui/core/Typography";
 import Ships from "../Assets/deco/ships.jpg";
 import Men from "../Assets/deco/men.jpg";
@@ -22,6 +23,14 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+
+  controls: {
+    alignItems: "center",
+    padding: 8,
+    height: 32,
+  },
+
+  wrapIcon: { justifyContent: "center" },
 });
 
 export default function MediaCard({ title, handleMainMenu }) {
@@ -33,23 +42,31 @@ export default function MediaCard({ title, handleMainMenu }) {
   if (title === "Docs") img = Docs;
 
   return (
-    <Card className={classes.root} color="primary">
+    <Card
+      className={classes.root}
+      color="primary"
+      onClick={() => handleMainMenu(title)}
+    >
       <CardActionArea>
         <CardMedia
           className={classes.media}
           image={img}
           title="Contemplative Reptile"
         />
-        <CardContent onClick={() => handleMainMenu(title)}>
-          <Typography gutterBottom variant="h6" component="h2">
+        <CardContent className={classes.controls}>
+          <Typography gutterBottom variant="h6" component="h2" align="center">
             {title}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          <NavigationIcon color="secondary"></NavigationIcon>
-        </Button>
+      <CardActions className={classes.wrapIcon}>
+        <IconButton
+          onClick={() => handleMainMenu(title)}
+          color="secondary"
+          aria-label="Go!"
+        >
+          <NavigationIcon color="secondary" />
+        </IconButton>
       </CardActions>
     </Card>
   );

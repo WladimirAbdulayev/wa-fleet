@@ -1,6 +1,11 @@
 .men-list-container{
   display: flex;
-  width: 95vh;
-  min-width: 400px;
+  width: 100%;
   flex-wrap: wrap;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 98%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }

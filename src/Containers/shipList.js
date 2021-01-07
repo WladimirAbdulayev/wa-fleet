@@ -6,24 +6,20 @@ import Ship from "../Components/ship";
 export default function ShipList({
   ships,
   showCrew,
-  deleteShip,
+  showShipVoyageOnMap,
   showShip,
   showShipOnMap,
 }) {
-  // <SelectedShip eventItem={ships[0]}></SelectedShip>
-
-  console.log("Ship List: Ships - ", ships);
-
   return (
-    <div className="block-list-container">
+    <div className="block-list-container scroller">
       {ships.map((ship) => (
         <Ship
-          key={ship._id}
+          key={ship.shipName}
           ship={ship}
           showCrew={showCrew}
           showShipOnMap={showShipOnMap}
           showShip={showShip}
-          deleteShip={deleteShip}
+          showShipVoyageOnMap={showShipVoyageOnMap}
         ></Ship>
       ))}
     </div>

@@ -1,12 +1,30 @@
 .desk-container{
   display: flex;
-  width: 95vh;
-  min-width: 600px;
-  margin: 20px;
-  border: white solid 1px;
-  border-radius: 0.8em;  
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+  width: 49%;
+  min-width: 400px;
+  height: 95vh;
+  flex-direction: column;
+  background-color: gold;
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+border: 5px solid rgb(37, 15, 73);
+ }
+
+ .desk-title{
+  width: 94%;
+  height: 30px;
   margin: 10px;
-  padding: 20px;
-}
+  box-sizing: border-box;
+ }
+
+ .block-container{
+  display: flex;
+  width: 100%;
+  min-width: 600px;
+  margin: 10px;
+  height: 90vh;
+ }
+
+
+

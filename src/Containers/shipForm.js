@@ -37,7 +37,7 @@ export default function Ship({ createShip }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
+    <form onSubmit={handleSubmit} className="item-container form-container">
       <input
         name="shipName"
         onChange={handleChange}

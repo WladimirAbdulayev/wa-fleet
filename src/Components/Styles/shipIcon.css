@@ -1,25 +1,25 @@
 .ship-icon-container {
-  width: 100px;
-  height: 100px;
+  display: flex;
+  width: 80px;
+  height: 40px;
   color:white;
   position: relative;
-  top: 60%;
-  left: 50%;
+  border: 0 transparent;
+  flex-direction: column;
+  background-color: hotpink;
 }
 
 .ship-icon-image-s{
-  width: 100px;
-  height: 30px;
+  width: 80px;
+  height: 25px;
+  image-rendering: pixelated;
 }
 
 .ship-icon-primary-text{
-  font-size: 1em;
-}
-
-.ship-marker{
-  border: transparent;
-}
-
-.leaflet-div-icon {
-  border: 0 transparent;
+  margin: 2px 5px 2px 5px;
+  font-size: 0.7em;
+  color: white;
+  background-color: rgba(0, 100, 0, 0.7);
+  font-family: "Inter";
+  text-align: center;
 }

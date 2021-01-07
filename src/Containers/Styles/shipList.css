@@ -1,8 +1,9 @@
 .block-list-container{
   display: flex;
   border: 1px chocolate;
-  overflow: auto;
+  overflow: scroll;
   overflow-y: hidden;
   background-color: var(--c9);
-  width: 100%;
+  width: 100%;  
 }
+

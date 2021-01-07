@@ -1,143 +1,80 @@
-import React, { Component } from "react";
-import GoogleMapReact from "google-map-react";
+import React, { useState, useRef, useEffect } from "react";
+import LandMarker from "./landMarker";
+import ReactDOMServer from "react-dom/server";
+
 import ShipIcon from "./shipIcon";
+
 import "./Styles/shipMap.css";
 import L from "leaflet";
 import {
   MapContainer,
   TileLayer,
   Marker,
-  Popup,
-  SVGOverlay,
-  Rectangle,
   Polyline,
+  // Popup,
+  // Tooltip,
+  useMap,
+  Circle,
+  // useMapEvents,
 } from "react-leaflet";
-import AnimIcon from "./animIcon";
-import ReactDOM from "react-dom";
-import { renderToStaticMarkup } from "react-dom/server";
-import { divIcon } from "leaflet";
-const ports = require("../Data/ports.json");
 
-function getByUnloc(unloc) {
-  return ports[unloc];
-}
+function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
+  const position = [56.15, 6];
+  const positionLandMarker = [53.9, 9.9937]; // Hamburg
+  const positionLandMarker1 = [55.63, 8.25]; // Esbjerg
+  const positionLandMarker2 = [57.58, 10.33]; // Skagen
+  const positionLandMarker3 = [56.24, 10.12]; // Aarhus
+  const positionLandMarker4 = [54.21, 12.25]; // Rostock
 
-function shipMap({ shipOnMap }) {
-  // getting port - WORKS
-  const port = getByUnloc("AEAUH");
-  console.log("SEA-PORT", port);
-
-  const iconMarkup = renderToStaticMarkup(<i class="fas fa-city"></i>);
-  const customMarkerIcon = divIcon({
-    html: iconMarkup,
-  });
-
-  // for google maps
-  let defaultProps = {
-    center: {
-      lat: 53.56,
-      lng: 9.65,
-    },
-    zoom: 12,
-  };
-
-  const position = [52.2, 3.7];
-  const position2 = [52.4, 3.5];
-  const position3 = [52.5, 4.1];
-  const position4 = [52.7, 4.3];
-
-  const bounds = [
-    [52.4, 3.8],
-    [52.6, 4.2],
-  ];
-  const rectangle = [
-    [52.6, 4.0],
-    [52.7, 4.1],
-  ];
-
-  const blackOptions = { color: "black" };
-
-  // return <div className="ship-map-container"></div>;
-
-  let multiPolyline = [
-    [52.9, 4.2],
-    [52.4, 3.9],
-    [52.3, 3.8],
-    [52.2, 3.7],
-    [51.04, 1.45],
-    [25.76, -80.19],
-    [29.76, -95.37],
-    [8.53, -80.78],
-  ];
+  const [mapZoom, setMapZoom] = useState(6);
 
   let selShip = {
-    shipName: "BBC Russia",
-    voyage: [
-      [52.9, 4.2],
-      [52.4, 3.2],
-    ],
+    shipName: "BBC Unknown",
+    voyage: [[55.5, 3.13]],
   };
 
-  if (shipOnMap) {
-    selShip = shipOnMap;
+  function ShowShip() {
+    if (shipOnMap) {
+      selShip = shipOnMap;
+    }
+    const map = useMap();
+    if (shipOnMap) {
+      map.flyTo(selShip.position);
+    }
+
+    return null;
   }
 
-  console.log("selShip", selShip, selShip.voyage);
+  function ShowVoyageLine(props) {
+    if (shipVoyageOnMap) {
+      selShip = shipVoyageOnMap;
+    }
 
-  const icon = L.divIcon({ className: "my-div-icon" });
+    const isLoggedIn = props.isLoggedIn;
+    const map = useMap();
+    if (isLoggedIn) {
+      if (shipVoyageOnMap) {
+        map.flyTo(selShip.position);
+        return (
+          <Polyline
+            pathOptions={{ color: "darkblue" }}
+            positions={selShip.voyage}
+            weight={3}
+            dashArray={"3, 5"}
+          />
+        );
+      }
+      return <p />;
+    }
+  }
 
-  const iconShip = new L.Icon({
-    iconUrl: "/ships/" + selShip.shipName + "_s.png",
-    iconAnchor: null,
-    popupAnchor: null,
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: new L.Point(100, 35),
-    className: "leaflet-div-icon",
-  });
+  let reiseArr = "";
 
-  // // zoom the map to the polyline
-  // map.fitBounds(polyline.getBounds());
-
-  // return (
-  //   <div className="ship-map-container">
-  //     <ShipIcon shipOnMap={shipOnMap} />
-  //   </div>
-  // );
-
-  const iconShip2 = new L.Icon({
-    iconUrl: "/ships/BBC Coral_s.png",
-    iconAnchor: null,
-    popupAnchor: null,
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: new L.Point(100, 27),
-    className: "leaflet-div-icon",
-  });
-
-  const iconShip3 = new L.Icon({
-    iconUrl: "/ships/BBC Mont Blanc_s.png",
-    iconAnchor: null,
-    popupAnchor: null,
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: new L.Point(100, 30),
-    className: "leaflet-div-icon",
-  });
-
-  /*   return (
-    <div className="ship-map-container">
-      <ShipIcon />
-    </div>
-  ); */
   return (
     <MapContainer
-      className="ship-map-container"
+      className="item-container ship-map-container"
       center={position}
-      zoom={8}
+      zoom={mapZoom}
       scrollWheelZoom={false}
     >
       <TileLayer
@@ -145,41 +82,122 @@ function shipMap({ shipOnMap }) {
         url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
       />
 
-      <Polyline
-        pathOptions={{ color: "blue" }}
-        positions={selShip.voyage}
-        weight={6}
-        dashArray={"5, 10"}
-      />
+      <LandMarker position={positionLandMarker} />
+      <LandMarker position={positionLandMarker1} />
+      <LandMarker position={positionLandMarker2} />
+      <LandMarker position={positionLandMarker3} />
+      <LandMarker position={positionLandMarker4} />
 
-      <Marker position={position} icon={iconShip}></Marker>
-      <Marker position={position2} icon={iconShip2}></Marker>
-      <Marker position={position3} icon={iconShip3}></Marker>
+      <Marker
+        draggable={true}
+        position={[53.59, 0.07]}
+        icon={
+          new L.Icon({
+            iconUrl: "/flags/UK.svg",
+            iconSize: new L.Point(80, 25),
+            className: "flag-icon",
+          })
+        }
+        eventHandlers={{
+          click: (e) => {
+            setMapZoom((prev) => prev + 1);
+            reiseArr +=
+              "[" +
+              e.latlng.lat.toFixed(2) +
+              "," +
+              e.latlng.lng.toFixed(2) +
+              "],";
+            console.log("clicked: Pos: ", reiseArr);
+          },
+        }}
+      ></Marker>
 
-      <Marker position={position4} icon={customMarkerIcon}></Marker>
+      <ShowVoyageLine isLoggedIn={true} />
+      <ShowShip />
+
+      {ships.map((ship) => (
+        <Marker
+          key={ship.shipName}
+          draggable={true}
+          position={ship.position}
+          icon={
+            new L.divIcon({
+              className: "ship-icon-container",
+              html: ReactDOMServer.renderToString(
+                <ShipIcon shipOnMap={ship} />
+              ),
+            })
+          }
+          // icon={
+          //   new L.Icon({
+          //     iconUrl: "/ships/" + ship.shipName + "_s.png",
+          //     iconSize: new L.Point(80, 25),
+          //     className: "ship-icon",
+          //   })
+          // }
+
+          eventHandlers={{
+            click: (e) => {
+              reiseArr +=
+                "[" +
+                e.latlng.lat.toFixed(2) +
+                "," +
+                e.latlng.lng.toFixed(2) +
+                "],";
+
+              console.log(ship.shipName + " clicked: Pos: ", reiseArr);
+              ship.voyage.push(reiseArr);
+
+              showShip(ship);
+            },
+          }}
+        >
+          {/* <Popup>
+            {ship.shipName}
+            <br />
+            Latitude: {ship.position[0]}
+            <br />
+            Longitude: {ship.position[1]}
+          </Popup> */}
+
+          {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
+            <span>{ship.shipName}</span>
+          </Tooltip> */}
+        </Marker>
+      ))}
     </MapContainer>
   );
 }
 
-export default shipMap;
+export default ShipMap;
 
-{
-  /* <GoogleMapReact
-bootstrapURLKeys={{ key: "AIzaSyD0t3fOh7r9oFHK2Ua5RAuuTzdutO7Sf_U" }}
+/*
+// ++++++++++++++++++++++++++++++++++++++++
+  // import GoogleMapReact from "google-map-react";
+// import ShipIcon from "./shipIcon";
+
+// ++++++++++++++++++++++++++++++++++++++++
+
+  /*   // for google maps
+  let defaultProps = {
+    center: {
+      lat: 53.56,
+      lng: 9.65,
+    },
+    zoom: 12,
+  }; */
+/* <GoogleMapReact
+bootstrapURLKeys={{ key: process.env.GOOGLE_API_KEY }}
 defaultCenter={defaultProps.center}
 defaultZoom={defaultProps.zoom}
 defaultMapId={defaultProps.mapId}
 >
 <ShipIcon lat={53.5582447} lng={9.647645} />
 </GoogleMapReact> */
-}
 
-{
-  /* <Marker position={position2} icon={icon}>
+/* <Marker position={position2} icon={icon}>
 <Popup>Little Red Block <br /> Easily customizable.</Popup>
 </Marker>
-
-
 
 <Rectangle bounds={rectangle} pathOptions={blackOptions} />
 
@@ -190,4 +208,54 @@ defaultMapId={defaultProps.mapId}
   text
 </text>
 </SVGOverlay> */
+
+/*
+const ports = require("../Data/ports.json");
+function getByUnloc(unloc) {
+  return ports[unloc];
 }
+  getting port - WORKS
+  const port = getByUnloc("AEAUH");
+  console.log("SEA-PORT", port);
+*/
+
+/*   return (
+    <div className="ship-map-container">
+      <ShipIcon />
+    </div>
+  ); */
+
+/*   function LocationMarker() {
+    const [position, setPosition] = useState(null);
+    const map = useMapEvents({
+      click() {
+        map.locate();
+      },
+      locationfound(e) {
+        setPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      },
+    });
+
+    return position === null ? null : (
+      <Marker position={position}>
+        <Popup>You are here</Popup>
+      </Marker>
+    );
+  } */
+
+/*   
+  function GetCoordinates() {
+    const [position, setPosition] = useState([55.1, 5]);
+    const map = useMapEvents({
+      click: () => {
+        map.locate();
+      },
+      locationfound: (location) => {
+        console.log("location found:", location.latlng);
+        setPosition(location.latlng);
+      },
+    });
+    return <LandMarker position={position} />;
+  } 
+  */

@@ -1,14 +1,6 @@
 .form-container {
-  display: flex;
-  flex-direction: column;
-  border: white solid 0.5px;
-  border-radius: 0.8em;  
   width: 20%;
   min-width: 300px;
-  box-shadow: 0 0 4px 2px rgb(196, 191, 191);
-  margin: 20px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .form-text {

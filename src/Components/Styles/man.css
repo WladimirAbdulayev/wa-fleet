@@ -9,7 +9,33 @@
    margin: 5px;
    width: 200px;
    overflow: hidden;
+   position: relative;
 }
 .man-image-s{
   height: 250px;
+}
+
+.man-secondary-text-center
+{
+  position: absolute;
+  top: 220px;
+  margin: 4px;
+  font-size: 0.8em;
+  color:white;
+  background-color:  #1d3557a2;
+}
+
+.man-nav{
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.4em; 
+  width: 22px;
+  position: absolute;
+  top: 5px;
+  left: 169px;
+  margin: 4px;
+  font-size: 0.8em;
+  color:white;
+  background-color:  #1d3557c2;
+  padding: 2px;
 }

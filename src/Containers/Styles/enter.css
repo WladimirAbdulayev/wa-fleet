@@ -1,10 +1,10 @@
 .enter-container {
-  width: 97%;
+  width: 96%;
   padding: 30px;
 }
 
 .enter-header{
-  height: 84vh;
+  height: 87vh;
   background-image: linear-gradient( 
     to right bottom,
     rgba(0, 0, 0, 0.9),

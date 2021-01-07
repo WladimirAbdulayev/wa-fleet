@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import "./Styles/card.css";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -95,3 +95,4 @@ export default function card() {
     </div>
   );
 }
+ */
