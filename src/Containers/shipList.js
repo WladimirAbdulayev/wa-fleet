@@ -9,9 +9,10 @@ export default function ShipList({
   showShipVoyageOnMap,
   showShip,
   showShipOnMap,
+  showShipStats,
 }) {
   return (
-    <div className="block-list-container scroller">
+    <div className="block-list-container">
       {ships.map((ship) => (
         <Ship
           key={ship.shipName}
@@ -20,6 +21,7 @@ export default function ShipList({
           showShipOnMap={showShipOnMap}
           showShip={showShip}
           showShipVoyageOnMap={showShipVoyageOnMap}
+          showShipStats={showShipStats}
         ></Ship>
       ))}
     </div>

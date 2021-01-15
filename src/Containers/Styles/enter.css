@@ -1,10 +1,10 @@
 .enter-container {
-  width: 96%;
+  width: 100%;
   padding: 30px;
 }
 
 .enter-header{
-  height: 87vh;
+  height: 92vh;
   background-image: linear-gradient( 
     to right bottom,
     rgba(0, 0, 0, 0.9),
@@ -12,7 +12,7 @@
     url('../../Assets/deco/bg1.jpg');
   background-size: cover;
   background-position: center;
-  clip-path: polygon(0 0,100% 0,100% 78vh, 0 100%);
+  clip-path: polygon(0 0,100% 0,100% 84vh, 0 100%);
   position: relative;
 }
 
@@ -94,3 +94,23 @@
     transform: translate(0);
   }
 }
+
+@media(max-width: 420px) {
+  .enter-container {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .enter-header{
+   width: 100%;
+  }
+
+  .enter-heading-primary-main{
+    font-size: 1.8rem ; 
+  }
+  
+  .enter-heading-primary-sec{
+  font-size: 0.8rem ;
+  }
+}
+  

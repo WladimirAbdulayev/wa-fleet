@@ -39,3 +39,20 @@
   background-color:  #1d3557c2;
   padding: 2px;
 }
+
+
+@media(max-width: 420px) {
+  .man-container
+  {
+     width: 180px;
+
+  }
+  .man-image-s{
+    height: 200px;
+  }
+
+  .man-nav{
+    left: 149px;
+
+  }
+}

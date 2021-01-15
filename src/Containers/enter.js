@@ -1,11 +1,11 @@
 import "./Styles/enter.css";
 import Fab from "@material-ui/core/Fab";
-import Zoom from "@material-ui/core/Zoom";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import logo from "../Assets/deco/icon-ship.svg";
 import MainTools from "./mainTools";
+import { Link } from "react-router-dom";
 
-export default function enterBlock({ handleMainMenu }) {
+export default function enterBlock({ mainTools, handleMainMenu }) {
   return (
     <div className="enter-container">
       <header className="enter-header">
@@ -22,19 +22,26 @@ export default function enterBlock({ handleMainMenu }) {
           </h1>
 
           <div className="maintools-box">
-            <MainTools handleMainMenu={handleMainMenu}></MainTools>
+            <MainTools
+              tools={mainTools}
+              handleMainMenu={handleMainMenu}
+            ></MainTools>
           </div>
 
           <div className="enter-button-box">
-            <Zoom in={true}>
-              <Fab
-                variant="extended"
-                style={{ backgound: "white", marginTop: 20 }}
-              >
-                <AssignmentTurnedInIcon />
-                Start Your Day!
-              </Fab>
-            </Zoom>
+            <Fab
+              component={Link}
+              to="/stats"
+              style={{
+                color: "#1D3557",
+                backgroundColor: "white",
+                marginTop: 20,
+              }}
+              variant="extended"
+            >
+              <AssignmentTurnedInIcon />
+              Start Your Day!
+            </Fab>
           </div>
         </div>
       </header>

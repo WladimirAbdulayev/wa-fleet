@@ -1,9 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { IconButton, Avatar } from "@material-ui/core";
 import { green, pink } from "@material-ui/core/colors";
-import { IconButton } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
-    fontSize: 12,
+    fontWeight: 300,
+    fontSize: "0.8em",
   },
   pink: {
     color: theme.palette.getContrastText(pink[500]),
@@ -23,28 +23,44 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     backgroundColor: green[500],
   },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
 }));
 
 const columns = [
-  { field: "id", headerName: "ID", width: 60 },
+  { field: "id", headerName: "ID", width: 45 },
   { field: "port", headerName: "Port", width: 120 },
-  { field: "operation", headerName: "Ops", width: 60 },
+  { field: "operation", headerName: "O.", width: 45 },
+  {
+    field: "icon",
+    headerName: "",
+    width: 60,
+    renderCell: (params) => (
+      <Avatar
+        style={{ height: 14, width: 14 }}
+        alt="Operation Icon"
+        src={`/icons/${params.getValue("operation")}.svg`}
+      />
+    ),
+  },
   {
     field: "days",
-    headerName: "Days",
+    headerName: "D.",
     type: "number",
-    width: 70,
+    width: 50,
   },
   {
     field: "op-Icon",
-    headerName: "Icon",
-    width: 60,
+    headerName: "F.",
+    width: 50,
     renderCell: (params) => (
       <IconButton
         onClick={() =>
           console.log("button Person", params.getValue("lastName"))
         }
-        color="primary"
+        style={{ color: "#1D3557" }}
         aria-label="crew"
       >
         <FolderIcon fontSize="small" />

@@ -1,17 +1,16 @@
 import L from "leaflet";
 import { Marker } from "react-leaflet";
-import landOffice from "../Assets/icons/landOffice.svg";
 
-export default function landMarker({ position }) {
+export default function landMarker({ position, iconType }) {
   return (
     <Marker
       draggable={true}
       position={position}
       icon={
         new L.Icon({
-          iconUrl: landOffice,
+          iconUrl: "/icons/" + iconType + ".svg",
           iconSize: new L.Point(22, 22),
-          className: "ship-icon",
+          className: "marker-icon-" + iconType,
         })
       }
     >

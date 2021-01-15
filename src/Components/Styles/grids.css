@@ -1,6 +1,5 @@
 .man-skills-block{
-  display: flex;
-  width: 90%;
-margin: 10 px;
-font-size: 0.6rem;
+width: 96%;
+border-radius: 0.3rem;
+background-color: var(--c9);
 }

@@ -2,12 +2,6 @@
   position: relative;
   width: 95%;
   height: 650px;
-/*   background: url('map.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-clip: unset; */
-
-  
 }
 
 .ship-map-primary-text {
@@ -16,19 +10,24 @@
 }
 
 .my-div-icon{
-background-color: red;
-width: 200px;
-height: 200px;
-
+  background-color: red;
+  width: 200px;
+  height: 200px;
 }
 
-.ship-icon {
+.marker-icon-D {
   background-color: transparent;
+  border: transparent 0 0;
+  color: green;
+}
+
+.marker-icon-Port {
   border: transparent 0 0;
 }
 
-.fa{
-  background-color: rgb(105, 59, 165);
+.marker-icon-W {
+  border: transparent 0 0;
+  fill:green;
 }
 
 .leaflet-container {
@@ -47,4 +46,11 @@ border: transparent;
 
 .fa-city{
   color: blue;
+}
+
+@media(max-width: 420px) {
+  .ship-map-container {
+    width: 99%;
+    height: 59vh;
+  }
 }

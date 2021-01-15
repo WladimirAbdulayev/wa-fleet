@@ -1,19 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+import { green, blue, pink } from "@material-ui/core/colors";
+import Avatar from "@material-ui/core/Avatar";
+import BeenhereTwoToneIcon from "@material-ui/icons/BeenhereTwoTone";
 import "./Styles/grids.css";
 
 export default function ManGridSkills({ crewMember }) {
-  const labels = {
+  /*   const labels = {
     0.5: "Useless",
     1: "Useless+",
     1.5: "Poor",
@@ -24,58 +22,94 @@ export default function ManGridSkills({ crewMember }) {
     4: "Good+",
     4.5: "Excellent",
     5: "Excellent+",
-  };
+  }; */
 
   const useStyles = makeStyles({
     root: {
-      width: "90%",
       display: "flex",
+      justifyContent: "flex-start",
       alignItems: "center",
+      height: 220,
     },
     card: {
-      maxWidth: 200,
+      maxWidth: 134,
       fontSize: 10,
+      height: 220,
+      backgroundColor: "#457B9D",
+      margin: 5,
+    },
+    avatars: {
+      display: "flex",
+      justifyContent: "flex-start",
+      flexDirection: "line",
+      margin: 5,
     },
     media: {
-      height: 140,
+      mxHeight: 50,
+    },
+    pink: {
+      backgroundColor: pink[500],
+    },
+    blue: {
+      backgroundColor: blue[500],
+    },
+    green: {
+      color: "#fff",
+      backgroundColor: green[500],
     },
   });
 
-  const [value, setValue] = React.useState(2);
-  const [hover, setHover] = React.useState(-1);
   const classes = useStyles();
+
+  /*   const skillAvatar = (skill) => {
+    // try {
+    //   const path = `../Assets/icons/${skill}.png`;
+    //   console.log("path: ", path);
+    //   require(path);
+    //   console.log("exists! ", path);
+    //   return <Avatar className={classes.pink}>{skill}</Avatar>;
+    // } catch {
+    return <Avatar className={classes.blue}>{skill}</Avatar>;
+    // }
+  };
+
+  const [value, setValue] = React.useState(2);
+  const [hover, setHover] = React.useState(-1); */
 
   console.log("man skills", crewMember.skills);
 
   return (
-    <div className="item-container man-skills-block">
+    <div className="item-block-container man-skills-block">
       {crewMember.skills.map((selSkill) => {
         return (
           <div className={classes.root}>
             <Card className={classes.card}>
-              <CardActionArea>
-                <img
-                  style={{ width: "100%" }}
-                  alt="Skill"
-                  src={`/skills/${selSkill.skill}.jpg`}
-                />
-                <CardContent>
+              <CardActionArea style={{ padding: 4 }}>
+                <div className={classes.avatars}>
+                  {/* {skillAvatar(selSkill.skill)} */}
+                  <Avatar className={classes.green}>{selSkill.grade}</Avatar>
+                  <Avatar className={classes.pink}>
+                    <BeenhereTwoToneIcon />
+                  </Avatar>
+                </div>
+                <CardContent style={{ padding: 4 }}>
                   <Rating
                     name="hover-feedback"
                     value={selSkill.level}
                     precision={0.5}
                     onChange={(event, newValue) => {
-                      setValue(newValue);
+                      // setValue(newValue);
                     }}
                     onChangeActive={(event, newHover) => {
-                      setHover(newHover);
+                      // setHover(newHover);
                     }}
                   />
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h6">
                     {selSkill.skill}
                   </Typography>
                   <Typography
                     variant="body2"
+                    style={{ fontSize: 11, marginTop: 4 }}
                     color="textSecondary"
                     component="p"
                   >
@@ -83,14 +117,6 @@ export default function ManGridSkills({ crewMember }) {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions>
             </Card>
           </div>
         );

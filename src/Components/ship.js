@@ -6,6 +6,7 @@ import DvrIcon from "@material-ui/icons/Dvr";
 import DirectionsBoatIcon from "@material-ui/icons/DirectionsBoat";
 import ArtTrackIcon from "@material-ui/icons/ArtTrack";
 import CenterFocusWeakIcon from "@material-ui/icons/CenterFocusWeak";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import PeopleIcon from "@material-ui/icons/People";
 
@@ -15,6 +16,7 @@ export default function Ship({
   showShipVoyageOnMap,
   showShip,
   showShipOnMap,
+  showShipStats,
 }) {
   const shipName = "/ships/" + ship.shipName + "_s.png";
 
@@ -37,7 +39,7 @@ export default function Ship({
             color="primary"
             style={{ fontSize: 9 }}
           >
-            Voyage
+            Details
           </Button>
           <Button
             onClick={() => showCrew(ship)}
@@ -49,23 +51,33 @@ export default function Ship({
             Crew
           </Button>
         </ButtonGroup>
-        <IconButton
-          onClick={() => showShipVoyageOnMap(ship)}
-          color="secondary"
-          aria-label="crew"
-        >
-          <CenterFocusWeakIcon fontSize="small" />
-        </IconButton>
-        <IconButton
-          onClick={() => showShipOnMap(ship)}
-          color="secondary"
-          aria-label="add an alarm"
-        >
-          <DirectionsBoatIcon fontSize="small" />
-        </IconButton>
-        <IconButton color="primary" aria-label="delete">
-          <DvrIcon fontSize="small" />
-        </IconButton>
+        <Tooltip title="Position on Map">
+          <IconButton
+            onClick={() => showShipOnMap(ship)}
+            color="secondary"
+            aria-label="crew"
+          >
+            <CenterFocusWeakIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Voyage on Map">
+          <IconButton
+            onClick={() => showShipVoyageOnMap(ship)}
+            color="secondary"
+            aria-label="add an alarm"
+          >
+            <DirectionsBoatIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Statistic">
+          <IconButton
+            color="primary"
+            aria-label="delete"
+            onClick={() => showShipStats(ship)}
+          >
+            <DvrIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

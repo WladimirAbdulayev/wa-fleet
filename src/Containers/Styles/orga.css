@@ -1,0 +1,245 @@
+.orga-container{
+  width: 100%;
+  height: 300vh;
+}
+
+/* section 1 */
+.parent {
+  display: grid;
+  place-items: center;
+  background: lightblue;
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.child {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid red;
+  background: lightpink;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* section 2 */
+
+.parent-white {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgb(66, 168, 105);
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.box-green{
+  /* flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
+  /* flex: 1 1 150px; /*  Stretching: */
+  flex: 0 1 150px; /*  No stretching: */
+
+  border: 1px solid rgb(25, 209, 80);
+  font-size: 2rem;
+  text-align: center;
+  background-color: green;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+/* section 3 */
+
+.parent-yellow {
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+
+  background: rgb(224, 204, 90);
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.section-yellow{
+  background-color: rgb(48, 48, 11);
+}
+
+/* section 4 */
+
+.parent-black{
+  background-color: black;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.blue-section{
+  background-color: blue;
+}
+.coral-section{
+  background-color: coral;
+}
+.purple-section{
+  background-color: purple;
+}
+
+/* section 5 */
+
+.parent-brown{
+
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+
+  background-color: brown;
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.pink-section{
+  background-color: pink;
+}
+
+.blue-section{
+  background-color: lightblue;
+}
+
+.section-coral{
+  background-color: coral;
+}
+
+.yellow-section{
+  background-color: rgb(141, 132, 65);
+}
+
+.green-section{
+  background-color: lightgreen;
+}
+
+/* 1<--->2<--->3<--->4 */
+.header {
+  padding: 2rem;
+  grid-column: 1 / 4;
+}
+
+.left-side {
+  grid-column: 1 / 2;
+}
+
+.main {
+  grid-column: 2 / 3;
+}
+
+.right-side {
+  grid-column: 3 / 4;
+}
+
+.footer {
+  grid-column: 1 / 4;
+}
+
+/* section 6 */
+.parent-12-span{
+  display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    background-color: rgb(175, 151, 151);
+    width: 200px;
+    height: 200px;
+    resize: both;
+    overflow: auto;
+}
+
+.span-12 {
+  grid-column: 1 / span 12;
+}
+
+.span-6 {
+  grid-column: 1 / span 6;
+}
+
+.span-4 {
+  grid-column: 4 / span 4;
+}
+
+.span-2 {
+  grid-column: 3 / span 2;
+}
+
+/* centering text */
+.section {
+  display: grid;
+  place-items: center;
+  text-align: center
+}
+
+/* section 7 */
+
+.parent-rem{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.par{
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+  background-color: moccasin;
+}
+
+.box {
+
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgb(69, 146, 92);
+  background: rgb(87, 194, 110);
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* section 8 */
+.parent-space{
+height: auto;
+display: grid;
+grid-gap: 1rem;
+grid-template-columns: repeat(3, 1fr);
+}
+
+.visual {
+  height: 100px;
+  width: 100%;
+}
+
+.card {
+
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: space-between;
+
+  padding: 0.5rem;
+  border: 1px solid rgb(69, 146, 92);
+  background: rgb(87, 194, 110);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.parent-clamp{    
+  display: grid;
+  place-items: center;
+}
+
+.card-clamp {
+  width: clamp(23ch, 50%, 46ch);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}

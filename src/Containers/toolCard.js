@@ -8,20 +8,21 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 
 import Typography from "@material-ui/core/Typography";
-import Ships from "../Assets/deco/ships.jpg";
-import Men from "../Assets/deco/men.jpg";
-import Docs from "../Assets/deco/docs.jpg";
+// import Ships from "../Assets/deco/ships.jpg";
+// import Men from "../Assets/deco/men.jpg";
+// import Stats from "../Assets/deco/docs.jpg";
 import NavigationIcon from "@material-ui/icons/Navigation";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    width: 140,
+    width: 130,
     background: "#1d3557c2",
     borderRadius: 10,
     color: "white",
   },
   media: {
-    height: 140,
+    height: 130,
   },
 
   controls: {
@@ -36,22 +37,23 @@ const useStyles = makeStyles({
 export default function MediaCard({ title, handleMainMenu }) {
   const classes = useStyles();
 
-  let img = "";
-  if (title === "Ships") img = Ships;
-  if (title === "Men") img = Men;
-  if (title === "Docs") img = Docs;
+  let history = useHistory();
+  // let img = "";
+  // if (title === "Ships") img = [title];
+  // if (title === "Men") img = Men;
+  // if (title === "Stats") img = Stats;
 
   return (
     <Card
       className={classes.root}
       color="primary"
-      onClick={() => handleMainMenu(title)}
+      onClick={() => handleMainMenu(title, history)}
     >
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={img}
-          title="Contemplative Reptile"
+          image={`/deco/${title}.jpg`}
+          title="Menu Item"
         />
         <CardContent className={classes.controls}>
           <Typography gutterBottom variant="h6" component="h2" align="center">
@@ -61,7 +63,7 @@ export default function MediaCard({ title, handleMainMenu }) {
       </CardActionArea>
       <CardActions className={classes.wrapIcon}>
         <IconButton
-          onClick={() => handleMainMenu(title)}
+          onClick={() => handleMainMenu(title, history)}
           color="secondary"
           aria-label="Go!"
         >

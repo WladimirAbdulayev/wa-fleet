@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
 
 :root {
   --c1: #1D3557; /* PrussianBlue */
@@ -10,12 +10,16 @@
   --c7: #D90429; /* AmaranthRed */
   --c8: #f77f00; /* Orange */
   --c9:  #09244be0; 
-  --c10: #1d3557c2; /* PrussianBlue */
+  --c10: #1d3557c2; 
+  --c11: #274875; /*  */
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 body {
@@ -25,10 +29,7 @@ body {
   line-height: 1.2;
   color: white;
   background-color: var(--c9);
-
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  background-image: url('./Assets/deco/bg/bg-graph-paper.svg');
 }
 
 body::-webkit-scrollbar {

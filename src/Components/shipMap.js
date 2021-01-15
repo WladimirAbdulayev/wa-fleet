@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { createRef } from "react";
 import LandMarker from "./landMarker";
 import ReactDOMServer from "react-dom/server";
-
 import ShipIcon from "./shipIcon";
 
 import "./Styles/shipMap.css";
@@ -11,64 +10,82 @@ import {
   TileLayer,
   Marker,
   Polyline,
-  // Popup,
-  // Tooltip,
+  FeatureGroup,
   useMap,
-  Circle,
-  // useMapEvents,
 } from "react-leaflet";
 
 function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
   const position = [56.15, 6];
-  const positionLandMarker = [53.9, 9.9937]; // Hamburg
-  const positionLandMarker1 = [55.63, 8.25]; // Esbjerg
-  const positionLandMarker2 = [57.58, 10.33]; // Skagen
-  const positionLandMarker3 = [56.24, 10.12]; // Aarhus
-  const positionLandMarker4 = [54.21, 12.25]; // Rostock
+  const groupRef = createRef();
 
-  const [mapZoom, setMapZoom] = useState(6);
+  const positionLandMarkers = [
+    [53.9, 9.9937],
+    [55.63, 8.25],
+    [57.58, 10.33],
+    [56.24, 10.12],
+    [54.21, 12.25],
+    [54.21, 12.25],
+    [59.46, 24.7],
+  ];
 
-  let selShip = {
-    shipName: "BBC Unknown",
-    voyage: [[55.5, 3.13]],
-  };
+  const mapZoom = 6;
 
   function ShowShip() {
-    if (shipOnMap) {
-      selShip = shipOnMap;
-    }
     const map = useMap();
     if (shipOnMap) {
-      map.flyTo(selShip.position);
+      map.flyTo(shipOnMap.position);
     }
-
     return null;
   }
 
-  function ShowVoyageLine(props) {
-    if (shipVoyageOnMap) {
-      selShip = shipVoyageOnMap;
+  function ShowVoyageLine() {
+    if (shipVoyageOnMap.voyage) {
+      console.log("ship Voyage On Map: ", shipVoyageOnMap);
+      return (
+        <Polyline
+          pathOptions={{ color: "darkblue" }}
+          positions={shipVoyageOnMap.voyage}
+          weight={3}
+          dashArray={"3, 5"}
+        />
+      );
     }
-
-    const isLoggedIn = props.isLoggedIn;
-    const map = useMap();
-    if (isLoggedIn) {
-      if (shipVoyageOnMap) {
-        map.flyTo(selShip.position);
-        return (
-          <Polyline
-            pathOptions={{ color: "darkblue" }}
-            positions={selShip.voyage}
-            weight={3}
-            dashArray={"3, 5"}
-          />
-        );
-      }
-      return <p />;
-    }
+    return null;
   }
 
-  let reiseArr = "";
+  function ShowStartEnd() {
+    const map = useMap();
+    let vStart = shipVoyageOnMap.voyage[0];
+    let vEnd = [...shipVoyageOnMap.voyage].pop();
+
+    var bounds = L.latLngBounds([vStart, vEnd]);
+    map.fitBounds(bounds);
+
+    console.log("Start & End of the Voyage: ", vStart, vEnd);
+    return (
+      <div>
+        <div>
+          <LandMarker position={vStart} iconType={"D"}></LandMarker>
+          <LandMarker position={vEnd} iconType={"S"}></LandMarker>
+        </div>
+
+        <div>
+          {shipVoyageOnMap.voyage.map(
+            (pos, index) =>
+              pos[2] && (
+                <LandMarker
+                  key={"land" + index}
+                  position={pos}
+                  iconType={pos[2]}
+                ></LandMarker>
+              )
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  let reiseArr = [];
 
   return (
     <MapContainer
@@ -82,25 +99,18 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
         url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
       />
 
-      <LandMarker position={positionLandMarker} />
-      <LandMarker position={positionLandMarker1} />
-      <LandMarker position={positionLandMarker2} />
-      <LandMarker position={positionLandMarker3} />
-      <LandMarker position={positionLandMarker4} />
-
       <Marker
         draggable={true}
         position={[53.59, 0.07]}
         icon={
           new L.Icon({
-            iconUrl: "/flags/UK.svg",
+            iconUrl: "/icons/crosshairs-solid.svg",
             iconSize: new L.Point(80, 25),
             className: "flag-icon",
           })
         }
         eventHandlers={{
           click: (e) => {
-            setMapZoom((prev) => prev + 1);
             reiseArr +=
               "[" +
               e.latlng.lat.toFixed(2) +
@@ -112,7 +122,20 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
         }}
       ></Marker>
 
-      <ShowVoyageLine isLoggedIn={true} />
+      {shipVoyageOnMap && <ShowVoyageLine></ShowVoyageLine>}
+
+      {shipVoyageOnMap && <ShowStartEnd></ShowStartEnd>}
+
+      <FeatureGroup ref={groupRef}>
+        {positionLandMarkers.map((positionLandMarker, index) => (
+          <LandMarker
+            key={"land" + index}
+            position={positionLandMarker}
+            iconType="W"
+          ></LandMarker>
+        ))}
+      </FeatureGroup>
+
       <ShowShip />
 
       {ships.map((ship) => (
@@ -128,14 +151,6 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
               ),
             })
           }
-          // icon={
-          //   new L.Icon({
-          //     iconUrl: "/ships/" + ship.shipName + "_s.png",
-          //     iconSize: new L.Point(80, 25),
-          //     className: "ship-icon",
-          //   })
-          // }
-
           eventHandlers={{
             click: (e) => {
               reiseArr +=
@@ -173,7 +188,7 @@ export default ShipMap;
 
 /*
 // ++++++++++++++++++++++++++++++++++++++++
-  // import GoogleMapReact from "google-map-react";
+// import GoogleMapReact from "google-map-react";
 // import ShipIcon from "./shipIcon";
 
 // ++++++++++++++++++++++++++++++++++++++++

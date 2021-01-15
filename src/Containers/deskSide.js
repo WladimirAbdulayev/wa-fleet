@@ -4,19 +4,25 @@ import ManGridSkills from "../Components/manGridSkills";
 import "./Styles/deskSide.css";
 
 export default function DeskSide({ crewMember }) {
+  const manPic = "/crew/" + crewMember.lastName + ".jpg";
   return (
-    <div>
-      <div>
-        <h3 className="desk-side-title">
-          {crewMember.rank} {crewMember.firstName} {crewMember.lastName}
-        </h3>
-      </div>
+    <div className="item-block-container man-details">
+      <div className="item-block-container">
+        <div className="man-title-container">
+          <img className="man-image-e" alt="man" src={manPic} />
 
-      <div className="man-side-skills">
-        {crewMember.skills === undefined ||
-        crewMember.skills.length === 0 ? null : (
-          <ManGridSkills crewMember={crewMember}></ManGridSkills>
-        )}
+          <div>
+            <h3 className="desk-title">
+              <span className="text-sec">{crewMember.rank} </span>
+              {crewMember.firstName} {crewMember.lastName}
+            </h3>
+
+            {crewMember.skills === undefined ||
+            crewMember.skills.length === 0 ? null : (
+              <ManGridSkills crewMember={crewMember}></ManGridSkills>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="man-side-service">

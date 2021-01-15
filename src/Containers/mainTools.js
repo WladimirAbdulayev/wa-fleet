@@ -16,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SpacingGrid({ handleMainMenu }) {
+export default function SpacingGrid({ tools, handleMainMenu }) {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={3}>
-          {["Ships", "Men", "Docs"].map((value) => (
+          {tools.map((value) => (
             <Grid key={value} item>
               <ToolCard
                 title={value}

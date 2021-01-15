@@ -1,8 +1,15 @@
 .desk-side-title{
-  width: 98%;
+  width: 97%;
   height: 30px;
   margin: 10px;
  }
+
+ .man-title-container{ 
+  width: 100%;
+  display: flex;
+  margin: 10px;
+  justify-content:left;
+  background-image: url('../../Assets/deco/bg/bg-texture.svg'); }
 
 /*  .man-side-title{
   margin: 20px;
@@ -12,5 +19,11 @@
    width: 96%;
  } */
 
+.man-image-e{
+  height: 92%;
+}
 
-
+ .man-details{
+   display: flex;
+   flex-direction: column;
+ }

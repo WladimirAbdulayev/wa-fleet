@@ -12,7 +12,7 @@ import PageviewIcon from "@material-ui/icons/Pageview";
 } */
 
 const columns = [
-  { field: "id", headerName: "#", width: 5 },
+  { field: "id", headerName: "#", width: 20 },
   {
     field: "getFileName",
     headerName: "Photo",
@@ -24,13 +24,13 @@ const columns = [
       />
     ),
   },
-  { field: "rank", headerName: "Rank", width: 80 },
-  { field: "lastName", headerName: "Name", width: 90 },
-  { field: "firstName", headerName: "Surname", width: 70 },
+  { field: "rank", headerName: "Rank", width: 70 },
+  { field: "lastName", headerName: "Surname", width: 90 },
+  { field: "firstName", headerName: "Name", width: 80 },
   {
     field: "button",
     headerName: "",
-    width: 60,
+    width: 50,
     renderCell: (params) => (
       <IconButton
         onClick={() =>
@@ -68,7 +68,15 @@ export default function DataGridDemo({ ship }) {
   }
 
   return (
-    <div style={{ height: 496, width: "96%", margin: 10 }}>
+    <div
+      style={{
+        height: 428,
+        width: "96%",
+        margin: 10,
+        overflowX: "hidden",
+        overflowY: "scroll",
+      }}
+    >
       <DataGrid
         headerHeight={26}
         rowHeight={40}
@@ -77,6 +85,7 @@ export default function DataGridDemo({ ship }) {
         columns={columns}
         pdaysSize={3}
         hideFooterPagination={true}
+        autoHeight={true}
       />
     </div>
   );

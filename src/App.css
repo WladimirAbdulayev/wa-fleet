@@ -1,16 +1,26 @@
-.app-Container {
+.app-container {
   width: 100%;
 }
 
 .item-container{
   border: white solid 1px;
-  border-radius: 0.8em;  
-  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0.6em;  
+  background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 4px 2px rgb(196, 191, 191);
   margin: 10px;
   padding: 10px;
   display: flex;
   overflow: hidden;
+}
+
+.item-block-container{
+  border: white solid 1px;
+  border-radius: 0.3em;  
+  background-color: #09244be0;
+  padding: 10px;
+  display: flex;
+  overflow: hidden;
+  margin: 8px;
 }
 
 .primary-text {
@@ -25,6 +35,10 @@
   text-align: left;
 }
 
+.secondary-text-center {
+  text-align: center;
+}
+
 .small-text {
   font-size: 0.7em;
   font-weight: 200;
@@ -32,38 +46,70 @@
   text-align: left;
 }
 
-.secondary-text-center {
-  font-size: 0.9em;
-  font-weight: 100;
-  color: lightslategray;
-  text-align: center;
-}
-
 .map-ship-block{
   display: flex;
   flex-direction: row;
 }
 
-.bottom-container {
+.desk-block {
   display: flex;
   width: 100%;
-background-color: chocolate;
-border: 5px solid red;
+  height: 97vh;
+
 flex-direction: row;
 box-sizing: border-box;
 -moz-box-sizing: border-box;
 -webkit-box-sizing: border-box;
 }
 
+.desk-container{
+  display: flex;
+  width: 48%;
+  min-width: 400px;
+  height: 98%;
+  flex-direction: column;
+ }
+
 .desk-side-container{
   display: flex;
-  width: 49%;
+  width: 52%;
   min-width: 400px;
   flex-direction: column;
-  background-color: rgb(126, 67, 121);
-  height: 95vh;
+  height: 98%;
   box-sizing: border-box;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-border: 5px solid rgb(20, 156, 72);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
  }
+
+ .stats-block{
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+
+}
+
+.navbar-top{
+  display: flex;
+  width: 100%;
+  background-color: var(--c9);
+  box-shadow: 0 0 2px 2px rgb(14, 13, 13);
+
+}
+
+ @media(max-width: 420px) {
+  .map-ship-block  {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .bottom-container {
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+  }
+  .item-container{
+    margin: 2px;
+    padding: 2px;
+  }
+
+}
+  

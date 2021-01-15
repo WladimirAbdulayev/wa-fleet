@@ -1,13 +1,15 @@
 .selected-ship-container{
   width: 24%; 
-  height: 650px;
+  height: 67vh;
   min-width: 24%;
   display: flex;
   flex-direction: column;
 }
 
+
+
 .selected-ship-navbar{
-  width: 96%; 
+  width: 100%; 
   display: flex;
   height: 26px;
   margin: 10px;
@@ -18,23 +20,61 @@
   display: flex;
 }
 
-.selected-ship-desc{
-  margin: 10px;
-  width: 80%;
-  font-size: 0.8rem;
-}
-
 .selected-ship-flag{
- width: 30%;
-  margin: 10px;
+  width: 100;
 }
 
 .flag{
-  height: 30px;
+  width: 70px;
+  margin: 10px;
+}
+
+.ship-container
+{
+  display: flex;
+  flex-direction: column;
+    border: white solid 1px;
+    border-radius: 0.6em;  
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 4px 2px rgb(196, 191, 191);
+    margin: 10px;
+   padding: 20px;
+}
+
+.s-ship-title-container
+{
+  flex: 1;
+  margin: 10px;
+}
+
+.s-ship-primary-text{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.s-ship-secondary-text{
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--c8);
+}
+
+
+.s-ship-secondary-text-s{
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: white;
 }
 
 .sel-ship-footer{
   width: 90%;
   height: 140px;
+  margin: 10px;
 }
 
+
+
+@media(max-width: 420px) {
+  .selected-ship-container {
+  width: 97%;
+  }
+}

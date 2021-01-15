@@ -5,14 +5,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/Inbox";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   large: {
     width: 50,
     height: 50,
+  },
+  inline: {
+    display: "inline",
+    fontSize: "0.8rem",
   },
 }));
 
@@ -25,7 +29,7 @@ export default function CustomizedTimeline({ ship }) {
 
   if (techStaff.length > 0) {
     return (
-      <div className="item-container office-staff-list-container">
+      <div className="item-block-container">
         <List component="nav" aria-label="main mailbox folders">
           {techStaff.map(function (staff) {
             return (
@@ -37,9 +41,30 @@ export default function CustomizedTimeline({ ship }) {
                     src={`/officeStaff/${staff.firstName}_${staff.lastName}.jpg`}
                   ></Avatar>
                 </ListItemAvatar>
+
                 <ListItemText
                   primary={`${staff.firstName} ${staff.lastName}`}
-                  secondary={staff.position}
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        style={{ color: "#457B9D" }}
+                      >
+                        {staff.position}
+                      </Typography>
+                      <p></p>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        style={{ color: "white" }}
+                      >
+                        {staff.phone}
+                      </Typography>
+                    </React.Fragment>
+                  }
                 />
               </ListItem>
             );

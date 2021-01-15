@@ -55,21 +55,15 @@ export default function ManGridService({ crewMember }) {
   const classes = useStyles();
 
   let rows = [];
-  console.log("--- crewMember: ", crewMember);
 
   if (crewMember && crewMember !== []) {
-    console.log("--- crewMember: ", crewMember);
-    console.log("--- crewMember.service: ", crewMember.service);
     rows = crewMember.service;
   } else {
     rows = [{}];
   }
 
   return (
-    <div
-      // className="man-service-grid"
-      style={{ height: 496, width: "96%", margin: 10 }}
-    >
+    <div style={{ height: 460, width: "98%", margin: 10 }}>
       <DataGrid
         headerHeight={26}
         rowHeight={40}

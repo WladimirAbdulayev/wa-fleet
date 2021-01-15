@@ -1,21 +1,35 @@
-.desk-container{
+
+.desk-title-container{
+  width: 100%;
   display: flex;
-  width: 49%;
-  min-width: 400px;
-  height: 95vh;
-  flex-direction: column;
-  background-color: gold;
-  box-sizing: border-box;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-border: 5px solid rgb(37, 15, 73);
- }
+  margin: 10px;
+  justify-content: space-between;
+  background-image: url('../../Assets/deco/bg/bg-texture.svg'); 
+  background-color: var(--c9);
+}
 
  .desk-title{
-  width: 94%;
-  height: 30px;
-  margin: 10px;
   box-sizing: border-box;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 5px;
+
+ }
+
+ 
+ .text-sec{
+color: var(--c8);
+
+ }
+
+ .desk-title-inv{
+  background-color: var(--c8);
+  box-sizing: border-box;
+  font-size: 2rem;
+  width: fit-content;
+  font-weight: 700;
+  padding: 10px;
+  margin-right: 35px;
  }
 
  .block-container{

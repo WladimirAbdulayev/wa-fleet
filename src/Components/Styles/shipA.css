@@ -1,0 +1,89 @@
+
+.ship-container-a
+{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+    border-radius: 16px;  
+    background-color: #17141d;
+    box-shadow: -1rem 0 3rem #000;
+    transition: .2s;
+    padding: 20px;
+    min-width: 260px;
+    height: 120px;
+    margin-top: 20px;
+}
+
+.ship-title-container-a
+{
+  flex: 1;
+}
+
+.ship-image-container-a
+{
+  flex: 4;
+  position: relative;
+  min-width: 290px;
+  min-height: 120px;
+}
+
+.ship-image-s-a {
+  position: absolute;
+  background-color: transparent;
+  width: 280px;
+  bottom: 0;
+  padding-top: 10px;
+}
+
+.ship-navbar-container-a{
+  margin-top: 10px;
+  flex: 1;
+  display: flex;
+  height: 26px;
+  width: 96%; 
+}
+
+.date-text-a {
+  font-size: 2em;
+  font-weight: 600;
+  color: greenyellow;
+  flex:1;
+}
+
+.text-container-a {
+  flex:3;
+}
+
+.ship-primary-text-a{
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.ship-secondary-text-a{
+  font-size: 0.7em;
+  font-weight: 600;
+  color: var(--c2);
+}
+
+
+
+
+
+.ship-container-a:hover
+{
+transform: translateY(-1rem);
+}
+
+.ship-container-a:hover~.ship-container-a
+{
+transform: translateX(60px);
+}
+
+.ship-container-a:not(:first-child) {
+margin-left:-60px;
+}
+
+.ship-title-container-a:hover
+{
+  color: var(--c8);
+}
