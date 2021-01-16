@@ -28,14 +28,14 @@ exports.Crew = [
           "Excellent performance during sea-trial and delivery in Weihai Ship Yard",
       },
       {
-        skill: "Heavy-lift ops",
+        skill: "Heavy-lift",
         level: 4,
         grade: "MA",
         desc:
           "loading / discharging H/L Rolls-Royce (400 MT) Turbines with cranes in tandem",
       },
       {
-        skill: "Crane driving",
+        skill: "Cranes",
         level: 5,
         grade: "DR",
         desc:
@@ -141,7 +141,7 @@ exports.Crew = [
     skills: [
       {
         id: 4,
-        skill: "Officer of the watch",
+        skill: "Watch Officer",
         level: 3,
         desc:
           "Good practical and theoretical knowledge. Ready for promotion to Officer of the watch",
@@ -195,7 +195,7 @@ exports.Crew = [
     skills: [
       {
         id: 4,
-        skill: "Officer of the watch",
+        skill: "Watch Officer",
         level: 3,
         desc:
           "Has required knowledge and potential for propmotion to Officer of the watch",
@@ -210,7 +210,7 @@ exports.Crew = [
       },
       {
         id: 2,
-        skill: "Crane driving",
+        skill: "Cranes",
         level: 5,
         desc:
           "loading / discharging of all sorts of H/L cargoes upto (200 MT), also in tandem",
@@ -300,7 +300,7 @@ exports.Crew = [
       },
       {
         id: 2,
-        skill: "Overhaul of Main Engine",
+        skill: "Overhauls",
         level: 4,
         desc:
           "Took active part and gained experience in overhauling of Main Engine.",

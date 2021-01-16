@@ -6,7 +6,7 @@ import "./Styles/deskSide.css";
 export default function DeskSide({ crewMember }) {
   const manPic = "/crew/" + crewMember.lastName + ".jpg";
   return (
-    <div className="item-block-container man-details">
+    <div className="item-block-container man-details with-bg">
       <div className="item-block-container">
         <div className="man-title-container">
           <img className="man-image-e" alt="man" src={manPic} />

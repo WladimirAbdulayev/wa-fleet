@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Styles/stats.css";
 import Fab from "@material-ui/core/Fab";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
-import MainTools from "./mainTools";
+import MainTools from "./toolBlock";
 import ShipChart from "../Components/chart";
 import ShipChartR from "../Components/chartR";
 import Zoom from "@material-ui/core/Zoom";

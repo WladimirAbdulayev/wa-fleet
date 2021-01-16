@@ -41,6 +41,7 @@ function App() {
   }
 
   function showShipOnMap(selShip) {
+    console.log("1. APP: showShipOnMap: ", selShip);
     const selShipOnMap = selShip;
     setShipOnMap(selShipOnMap);
     setShipVoyageOnMap("");
@@ -48,9 +49,12 @@ function App() {
   }
 
   function showShipVoyageOnMap(selShip) {
+    console.log("2. APP: showShipVoyageOnMap: ", selShip);
     const selShipVoyageOnMap = selShip;
-    setShipVoyageOnMap(selShipVoyageOnMap);
     setShip(selShipVoyageOnMap);
+    //setShipOnMap(selShipVoyageOnMap);
+    showShipOnMap("");
+    setShipVoyageOnMap(selShipVoyageOnMap);
   }
 
   function showCrewMember(selCrewMember) {
@@ -162,28 +166,30 @@ function App() {
                   mainTools={mainTools}
                   handleMainMenu={handleMainMenu}
                 ></Enter>
-                <div className="map-ship-block">
-                  <ShipMap
-                    ships={ships}
-                    shipOnMap={shipOnMap}
-                    showShip={showShip}
-                    shipVoyageOnMap={shipVoyageOnMap}
-                  ></ShipMap>
-                  <div ref={myRef1}></div>
-                  {ship === undefined || ship.length === 0 ? null : (
-                    <SelectedShip ship={ship} />
-                  )}
-                </div>
+                <div className="ship-block">
+                  <div className="map-ship-block">
+                    <ShipMap
+                      ships={ships}
+                      shipOnMap={shipOnMap}
+                      showShip={showShip}
+                      shipVoyageOnMap={shipVoyageOnMap}
+                    ></ShipMap>
+                    <div ref={myRef1}></div>
+                    {ship === undefined || ship.length === 0 ? null : (
+                      <SelectedShip ship={ship} />
+                    )}
+                  </div>
 
-                <ShipList
-                  ships={ships}
-                  showShipVoyageOnMap={showShipVoyageOnMap}
-                  showCrew={showCrew}
-                  showShip={showShip}
-                  showShipOnMap={showShipOnMap}
-                  showShipStats={showShipStats}
-                ></ShipList>
-                <PageNavigation changePage={changePage}></PageNavigation>
+                  <ShipList
+                    ships={ships}
+                    showShipVoyageOnMap={showShipVoyageOnMap}
+                    showCrew={showCrew}
+                    showShip={showShip}
+                    showShipOnMap={showShipOnMap}
+                    showShipStats={showShipStats}
+                  ></ShipList>
+                  <PageNavigation changePage={changePage}></PageNavigation>
+                </div>
                 <div ref={myRef2}></div>
 
                 <div className="desk-block">

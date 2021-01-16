@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import LandMarker from "./landMarker";
+import IconMarker from "./marker";
 import ReactDOMServer from "react-dom/server";
 import ShipIcon from "./shipIcon";
 
@@ -18,7 +18,7 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
   const position = [56.15, 6];
   const groupRef = createRef();
 
-  const positionLandMarkers = [
+  const positionIconMarkers = [
     [53.9, 9.9937],
     [55.63, 8.25],
     [57.58, 10.33],
@@ -28,19 +28,28 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
     [59.46, 24.7],
   ];
 
-  const mapZoom = 6;
+  let mapZoom = 6;
 
   function ShowShip() {
+    console.log("1. MAP: show SHIP: ", shipOnMap);
     const map = useMap();
     if (shipOnMap) {
       map.flyTo(shipOnMap.position);
+
+      const [lat, lng] = shipOnMap.position;
+      let bounds = L.latLngBounds([
+        [lat - 3, lng - 3],
+        [lat + 3, lng + 3],
+      ]);
+      map.fitBounds(bounds);
     }
+
     return null;
   }
 
   function ShowVoyageLine() {
     if (shipVoyageOnMap.voyage) {
-      console.log("ship Voyage On Map: ", shipVoyageOnMap);
+      console.log("2. MAP: show VOYAGE: ", shipVoyageOnMap);
       return (
         <Polyline
           pathOptions={{ color: "darkblue" }}
@@ -58,26 +67,27 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
     let vStart = shipVoyageOnMap.voyage[0];
     let vEnd = [...shipVoyageOnMap.voyage].pop();
 
-    var bounds = L.latLngBounds([vStart, vEnd]);
+    let bounds = L.latLngBounds([vStart, vEnd]);
     map.fitBounds(bounds);
 
-    console.log("Start & End of the Voyage: ", vStart, vEnd);
+    console.log("Set Bounds to Start & End of the Voyage: ", vStart, vEnd);
+
     return (
       <div>
         <div>
-          <LandMarker position={vStart} iconType={"D"}></LandMarker>
-          <LandMarker position={vEnd} iconType={"S"}></LandMarker>
+          <IconMarker position={vStart} iconType={"D"}></IconMarker>
+          <IconMarker position={vEnd} iconType={"S"}></IconMarker>
         </div>
 
         <div>
           {shipVoyageOnMap.voyage.map(
             (pos, index) =>
               pos[2] && (
-                <LandMarker
+                <IconMarker
                   key={"land" + index}
                   position={pos}
                   iconType={pos[2]}
-                ></LandMarker>
+                ></IconMarker>
               )
           )}
         </div>
@@ -89,7 +99,7 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
 
   return (
     <MapContainer
-      className="item-container ship-map-container"
+      className="ship-map-container"
       center={position}
       zoom={mapZoom}
       scrollWheelZoom={false}
@@ -123,20 +133,19 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
       ></Marker>
 
       {shipVoyageOnMap && <ShowVoyageLine></ShowVoyageLine>}
-
       {shipVoyageOnMap && <ShowStartEnd></ShowStartEnd>}
 
       <FeatureGroup ref={groupRef}>
-        {positionLandMarkers.map((positionLandMarker, index) => (
-          <LandMarker
+        {positionIconMarkers.map((positionIconMarker, index) => (
+          <IconMarker
             key={"land" + index}
-            position={positionLandMarker}
+            position={positionIconMarker}
             iconType="W"
-          ></LandMarker>
+          ></IconMarker>
         ))}
       </FeatureGroup>
 
-      <ShowShip />
+      {shipOnMap && <ShowShip />}
 
       {ships.map((ship) => (
         <Marker
@@ -271,6 +280,6 @@ function getByUnloc(unloc) {
         setPosition(location.latlng);
       },
     });
-    return <LandMarker position={position} />;
+    return <IconMarker position={position} />;
   } 
   */

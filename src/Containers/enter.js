@@ -2,7 +2,7 @@ import "./Styles/enter.css";
 import Fab from "@material-ui/core/Fab";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import logo from "../Assets/deco/icon-ship.svg";
-import MainTools from "./mainTools";
+import MainTools from "./toolBlock";
 import { Link } from "react-router-dom";
 
 export default function enterBlock({ mainTools, handleMainMenu }) {

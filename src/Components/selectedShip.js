@@ -32,7 +32,7 @@ export default function SelectedShip({ ship }) {
   const [lat = 0, lng = 0] = position;
 
   return (
-    <div className="item-container selected-ship-container">
+    <div className="selected-ship-container">
       <div className="selected-ship-navbar">
         <ButtonGroup variant="contained" size="small">
           <Button

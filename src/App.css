@@ -23,6 +23,10 @@
   margin: 8px;
 }
 
+.with-bg{
+  background-image: url('./Assets/deco/bg/bg-texture.svg');
+}
+
 .primary-text {
   font-weight: 300;
   text-align: left;
@@ -46,6 +50,12 @@
   text-align: left;
 }
 
+.ship-block{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 260px;
+}
 .map-ship-block{
   display: flex;
   flex-direction: row;
@@ -111,5 +121,62 @@ box-sizing: border-box;
     padding: 2px;
   }
 
+}
+
+
+/* section 5 */
+
+.parent-brown{
+
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+
+  background-color: brown;
+  width: 200px;
+  height: 200px;
+  resize: both;
+  overflow: auto;
+}
+
+.pink-section{
+  background-color: pink;
+}
+
+.blue-section{
+  background-color: lightblue;
+}
+
+.section-coral{
+  background-color: coral;
+}
+
+.yellow-section{
+  background-color: rgb(141, 132, 65);
+}
+
+.green-section{
+  background-color: lightgreen;
+}
+
+/* 1<--->2<--->3<--->4 */
+.header {
+  padding: 2rem;
+  grid-column: 1 / 4;
+}
+
+.left-side {
+  grid-column: 1 / 2;
+}
+
+.main {
+  grid-column: 2 / 3;
+}
+
+.right-side {
+  grid-column: 3 / 4;
+}
+
+.footer {
+  grid-column: 1 / 4;
 }
   

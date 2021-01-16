@@ -1,9 +1,11 @@
 .selected-ship-container{
   width: 24%; 
-  height: 67vh;
+  height: 100%;
   min-width: 24%;
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
 }
 
 
