@@ -1,0 +1,71 @@
+
+.marker-v{
+  border: transparent 0 0;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #f6aa1c;
+}
+
+.fa-w-16{
+  background-color: darkblue;
+}
+
+.marker-icon-Start {
+  background-color: #2b9348 ;
+}
+
+.marker-icon-O {
+  background-color: rgb(82, 20, 82) ;
+}
+
+.marker-icon-End {
+  background-color: #941b0c;
+}
+
+.marker-icon-M {
+  background-color: #941b0c;
+}
+
+
+.marker-icon-W {
+  background-color: #31572c ;
+}
+
+.marker-icon-D {
+  background-color: white;
+}
+
+.marker-icon-Check {
+  background-color: #ffd000;
+}
+
+.marker-icon-Compass {
+  background-color: #003459;
+}
+
+
+
+.marker-icon-S {
+  background-color: darkblue;
+  border: transparent 0 0;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.marker-icon-L {
+  background-color: wheat;
+  border: transparent 0 0;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.marker-icon-Port {
+  border: transparent 0 0;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.marker-icon-W {
+  border: transparent 0 0;
+
+}

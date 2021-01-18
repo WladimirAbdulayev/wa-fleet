@@ -13,21 +13,34 @@ import PageNavigation from "./Components/pageNavigation";
 import Button from "@material-ui/core/Button";
 import AppsIcon from "@material-ui/icons/Apps";
 import Crew from "./Data/dataCrew";
+import Agents from "./Data/agents";
 import Ships from "./Data/ships";
+import UserContext from "./UserContext";
+import ShipContext from "./ShipContext";
 
 function App() {
   const [ships, setShips] = useState([]);
-  const [ship, setShip] = useState([]);
+  const [ship, setShip] = useState("");
   const [crew, setCrew] = useState([]);
   const [crewMember, setCrewMember] = useState([]);
   const [shipOnMap, setShipOnMap] = useState("");
   const [shipVoyageOnMap, setShipVoyageOnMap] = useState("");
   const [shipStats, setShowShipStats] = useState([]);
+  const [agents, setAgents] = useState("");
 
   useEffect(() => {
     setShips(Ships.Ships);
     setShip(Ships.Ships[0]);
   }, []);
+
+  /* 
+    - runs on second render
+    - for ajax requests
+    - return = clean up function
+    useEffect(() => {
+      do something
+    }, [DEPENDENCY - value f.e. ship]);
+  */
 
   function showCrew(selShip) {
     const men = Crew.Crew;
@@ -40,6 +53,12 @@ function App() {
     setShip(selShip);
   }
 
+  function showAgents(selShip) {
+    console.log("3. APP: setAgents: ", Agents.Agents);
+    // imitating getting agents around the ship
+    setAgents(Agents.Agents);
+  }
+
   function showShipOnMap(selShip) {
     console.log("1. APP: showShipOnMap: ", selShip);
     const selShipOnMap = selShip;
@@ -50,11 +69,10 @@ function App() {
 
   function showShipVoyageOnMap(selShip) {
     console.log("2. APP: showShipVoyageOnMap: ", selShip);
-    const selShipVoyageOnMap = selShip;
-    setShip(selShipVoyageOnMap);
+    setShip(selShip);
     //setShipOnMap(selShipVoyageOnMap);
-    showShipOnMap("");
-    setShipVoyageOnMap(selShipVoyageOnMap);
+    setShipOnMap("");
+    setShipVoyageOnMap(selShip);
   }
 
   function showCrewMember(selCrewMember) {
@@ -74,12 +92,12 @@ function App() {
       case "Ships":
         myRef1.current.scrollIntoView();
         break;
-      case "Men":
+      case "Crew":
         showCrew(ship);
         myRef2.current.scrollIntoView();
         break;
       case "Stats":
-        history.push("/stats"); // not working!
+        history.push("/stats");
         break;
       default:
         console.log("Main Menu: ", title, " not implemented.");
@@ -111,109 +129,120 @@ function App() {
     }
   }
 
-  const mainTools = ["Ships", "Men", "Stats"];
-  const statTools = ["Budget", "Voyage", "Graphs"];
+  const mainTools = ["Ships", "Crew", "Stats"];
+  const statTools = ["Budget", "Voyage", "Cargo"];
+
+  const userState = useState({
+    userName: "Wladimir Abdulayev",
+    userRole: "admin",
+    suffix: 1,
+  });
 
   return (
-    <div className="app-container">
-      <Router>
-        <div>
-          <nav className="navbar-top">
-            <AppsIcon style={{ margin: 5 }}></AppsIcon>
-            <Button style={{ color: "white" }} component={Link} to="/">
-              Home
-            </Button>
-            <Button style={{ color: "white" }} component={Link} to="/stats">
-              Stats
-            </Button>
-            <Button style={{ color: "white" }} component={Link} to="/orga">
-              Orga
-            </Button>
-          </nav>
-          <Switch>
-            <Route path="/stats">
-              <div
-                className="stats-block"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) ), url('/deco/bg_stats.jpg')",
-                }}
-              >
-                <Stats
-                  blockName="Stats"
-                  statTools={statTools}
-                  handleMainMenu={handleMainMenu}
-                  shipStats={shipStats}
-                ></Stats>
-              </div>
-            </Route>
-            <Route path="/orga">
-              <div>
-                <Orga
-                  blockName="Orga"
-                  statTools={statTools}
-                  handleMainMenu={handleMainMenu}
-                  shipStats={shipStats}
-                ></Orga>
-              </div>
-              <PageNavigation changePage={changePage}></PageNavigation>
-            </Route>
-
-            <Route path="/">
-              <div ref={myRef0}></div>
-              <div>
-                <Enter
-                  mainTools={mainTools}
-                  handleMainMenu={handleMainMenu}
-                ></Enter>
-                <div className="ship-block">
-                  <div className="map-ship-block">
-                    <ShipMap
-                      ships={ships}
-                      shipOnMap={shipOnMap}
-                      showShip={showShip}
-                      shipVoyageOnMap={shipVoyageOnMap}
-                    ></ShipMap>
-                    <div ref={myRef1}></div>
-                    {ship === undefined || ship.length === 0 ? null : (
-                      <SelectedShip ship={ship} />
-                    )}
+    <ShipContext.Provider value={ship}>
+      <UserContext.Provider value={userState}>
+        <div className="app-container">
+          <Router>
+            <nav className="navbar-top">
+              <AppsIcon style={{ margin: 5 }}></AppsIcon>
+              <Button style={{ color: "white" }} component={Link} to="/">
+                Home
+              </Button>
+              <Button style={{ color: "white" }} component={Link} to="/stats">
+                Stats
+              </Button>
+              <Button style={{ color: "white" }} component={Link} to="/orga">
+                Orga
+              </Button>
+            </nav>
+            <div className="stats-container">
+              <Switch>
+                <Route path="/stats">
+                  <div
+                    className="stats-block"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) ), url('/deco/bg_stats.jpg')",
+                    }}
+                  >
+                    <Stats
+                      blockName="S T A T S"
+                      statTools={statTools}
+                      handleMainMenu={handleMainMenu}
+                      shipStats={shipStats}
+                    ></Stats>
                   </div>
-
-                  <ShipList
-                    ships={ships}
-                    showShipVoyageOnMap={showShipVoyageOnMap}
-                    showCrew={showCrew}
-                    showShip={showShip}
-                    showShipOnMap={showShipOnMap}
-                    showShipStats={showShipStats}
-                  ></ShipList>
+                </Route>
+                <Route path="/orga">
+                  <div>
+                    <Orga
+                      blockName="Orga"
+                      statTools={statTools}
+                      handleMainMenu={handleMainMenu}
+                      shipStats={shipStats}
+                    ></Orga>
+                  </div>
                   <PageNavigation changePage={changePage}></PageNavigation>
-                </div>
-                <div ref={myRef2}></div>
+                </Route>
 
-                <div className="desk-block">
-                  <div className="item-container desk-container">
-                    <Desk
-                      men={crew}
-                      showCrewMember={showCrewMember}
-                      ship={ship}
-                    ></Desk>
+                <Route path="/">
+                  <div ref={myRef0}></div>
+                  <div className="enter-ship-crew">
+                    <Enter
+                      mainTools={mainTools}
+                      handleMainMenu={handleMainMenu}
+                    ></Enter>
+                    <div className="ship-block">
+                      <div className="map-ship-block">
+                        <ShipMap
+                          ships={ships}
+                          shipOnMap={shipOnMap}
+                          showShip={showShip}
+                          shipVoyageOnMap={shipVoyageOnMap}
+                          agents={agents}
+                        ></ShipMap>
+                        <div ref={myRef1}></div>
+                        {ship === undefined || ship.length === 0 ? null : (
+                          <SelectedShip ship={ship} showAgents={showAgents} />
+                        )}
+                      </div>
+
+                      <ShipList
+                        ships={ships}
+                        showShipVoyageOnMap={showShipVoyageOnMap}
+                        showCrew={showCrew}
+                        showShip={showShip}
+                        showShipOnMap={showShipOnMap}
+                        showShipStats={showShipStats}
+                      ></ShipList>
+                      <PageNavigation changePage={changePage}></PageNavigation>
+                    </div>
+                    <div ref={myRef2}></div>
+
+                    <div className="desk-block">
+                      <div className="item-container desk-container">
+                        <Desk
+                          men={crew}
+                          showCrewMember={showCrewMember}
+                          ship={ship}
+                        ></Desk>
+                      </div>
+                      <div className="item-container desk-side-container">
+                        {crewMember === undefined ||
+                        crewMember.length === 0 ? null : (
+                          <DeskSide crewMember={crewMember} />
+                        )}
+                      </div>
+                    </div>
+                    <PageNavigation changePage={changePage}></PageNavigation>
                   </div>
-                  <div className="item-container desk-side-container">
-                    {crewMember === undefined ||
-                    crewMember.length === 0 ? null : (
-                      <DeskSide crewMember={crewMember} />
-                    )}
-                  </div>
-                </div>
-                <PageNavigation changePage={changePage}></PageNavigation>
-              </div>
-            </Route>
-          </Switch>
+                </Route>
+              </Switch>
+            </div>
+          </Router>
         </div>
-      </Router>
-    </div>
+      </UserContext.Provider>
+    </ShipContext.Provider>
   );
 }
 

@@ -8,21 +8,26 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 
 import Typography from "@material-ui/core/Typography";
-// import Ships from "../Assets/deco/ships.jpg";
-// import Men from "../Assets/deco/men.jpg";
-// import Stats from "../Assets/deco/docs.jpg";
+
+import Ships from "../Assets/deco/ships.jpg";
+import Crew from "../Assets/deco/crew.jpg";
+import Stats from "../Assets/deco/stats.jpg";
+import Budget from "../Assets/deco/budget.jpg";
+import Voyage from "../Assets/deco/voyage.jpg";
+import Cargo from "../Assets/deco/cargo.jpg";
+
 import NavigationIcon from "@material-ui/icons/Navigation";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    width: 130,
+    width: 140,
     background: "#1d3557c2",
     borderRadius: 10,
     color: "white",
   },
   media: {
-    height: 130,
+    height: 140,
   },
 
   controls: {
@@ -38,10 +43,14 @@ export default function MediaCard({ title, handleMainMenu }) {
   const classes = useStyles();
 
   let history = useHistory();
-  // let img = "";
-  // if (title === "Ships") img = [title];
-  // if (title === "Men") img = Men;
-  // if (title === "Stats") img = Stats;
+  let img = "";
+  if (title === "Ships") img = Ships;
+  if (title === "Crew") img = Crew;
+  if (title === "Stats") img = Stats;
+  if (title === "Budget") img = Budget;
+  if (title === "Voyage") img = Voyage;
+  if (title === "Cargo") img = Cargo;
+
 
   return (
     <Card
@@ -52,7 +61,8 @@ export default function MediaCard({ title, handleMainMenu }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={`/deco/${title}.jpg`}
+          image={img}
+          // image={"/deco/"+{title}+".jpg"}
           title="Menu Item"
         />
         <CardContent className={classes.controls}>

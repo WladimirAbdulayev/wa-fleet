@@ -1,33 +1,22 @@
-import React, { createRef } from "react";
+import React from "react";
 import IconMarker from "./marker";
 import ReactDOMServer from "react-dom/server";
 import ShipIcon from "./shipIcon";
 
 import "./Styles/shipMap.css";
+import "./Styles/markers.css";
 import L from "leaflet";
 import {
   MapContainer,
   TileLayer,
   Marker,
   Polyline,
-  FeatureGroup,
   useMap,
+  Popup,
 } from "react-leaflet";
 
-function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
+const ShipMap = ({ ships, shipOnMap, showShip, shipVoyageOnMap, agents }) => {
   const position = [56.15, 6];
-  const groupRef = createRef();
-
-  const positionIconMarkers = [
-    [53.9, 9.9937],
-    [55.63, 8.25],
-    [57.58, 10.33],
-    [56.24, 10.12],
-    [54.21, 12.25],
-    [54.21, 12.25],
-    [59.46, 24.7],
-  ];
-
   let mapZoom = 6;
 
   function ShowShip() {
@@ -56,7 +45,7 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
           positions={shipVoyageOnMap.voyage}
           weight={3}
           dashArray={"3, 5"}
-        />
+        ></Polyline>
       );
     }
     return null;
@@ -75,8 +64,10 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
     return (
       <div>
         <div>
-          <IconMarker position={vStart} iconType={"D"}></IconMarker>
-          <IconMarker position={vEnd} iconType={"S"}></IconMarker>
+          <IconMarker position={vStart} iconType={"Start"}>
+            <Popup>Start of the voyage, mv {shipVoyageOnMap} </Popup>
+          </IconMarker>
+          <IconMarker position={vEnd} iconType={"End"}></IconMarker>
         </div>
 
         <div>
@@ -91,6 +82,25 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
               )
           )}
         </div>
+      </div>
+    );
+  }
+
+  function ShowAgents() {
+    if (!agents) return null;
+    console.log("MAP: Show Agent", agents);
+    return (
+      <div>
+        {agents.map((agent, index) => (
+          <IconMarker
+            key={"land" + index}
+            position={agent.position}
+            iconType="Agent"
+            agent={agent}
+          >
+            <Popup>Agent</Popup>
+          </IconMarker>
+        ))}
       </div>
     );
   }
@@ -111,10 +121,10 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
 
       <Marker
         draggable={true}
-        position={[53.59, 0.07]}
+        position={[53.23, 7.46]}
         icon={
           new L.Icon({
-            iconUrl: "/icons/crosshairs-solid.svg",
+            iconUrl: "/icons/Crosshairs.svg",
             iconSize: new L.Point(80, 25),
             className: "flag-icon",
           })
@@ -132,18 +142,9 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
         }}
       ></Marker>
 
-      {shipVoyageOnMap && <ShowVoyageLine></ShowVoyageLine>}
-      {shipVoyageOnMap && <ShowStartEnd></ShowStartEnd>}
-
-      <FeatureGroup ref={groupRef}>
-        {positionIconMarkers.map((positionIconMarker, index) => (
-          <IconMarker
-            key={"land" + index}
-            position={positionIconMarker}
-            iconType="W"
-          ></IconMarker>
-        ))}
-      </FeatureGroup>
+      {shipVoyageOnMap && <ShowVoyageLine />}
+      {shipVoyageOnMap && <ShowStartEnd />}
+      {agents && <ShowAgents />}
 
       {shipOnMap && <ShowShip />}
 
@@ -176,13 +177,13 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
             },
           }}
         >
-          {/* <Popup>
+          <Popup>
             {ship.shipName}
             <br />
             Latitude: {ship.position[0]}
             <br />
             Longitude: {ship.position[1]}
-          </Popup> */}
+          </Popup>
 
           {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
             <span>{ship.shipName}</span>
@@ -191,7 +192,7 @@ function ShipMap({ ships, shipOnMap, showShip, shipVoyageOnMap }) {
       ))}
     </MapContainer>
   );
-}
+};
 
 export default ShipMap;
 

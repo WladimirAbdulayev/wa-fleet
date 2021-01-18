@@ -10,8 +10,10 @@ import SwapCallsIcon from "@material-ui/icons/SwapCalls";
 import BallotIcon from "@material-ui/icons/Ballot";
 import BusinessIcon from "@material-ui/icons/Business";
 import BookIcon from "@material-ui/icons/Book";
+import { useContext} from "react";
+import UserContext from "../UserContext";
 
-export default function SelectedShip({ ship }) {
+export default function SelectedShip({ ship, showAgents }) {
   const [gridType, setGridType] = useState();
 
   const { flag, position, reise } = ship;
@@ -30,6 +32,9 @@ export default function SelectedShip({ ship }) {
   } = reise[2];
 
   const [lat = 0, lng = 0] = position;
+
+  const shipName = "/ships/" + ship.shipName + "_s.png";
+  const user=useContext(UserContext);
 
   return (
     <div className="selected-ship-container">
@@ -56,7 +61,7 @@ export default function SelectedShip({ ship }) {
 
         <Tooltip title="Agent Network">
           <IconButton
-            onClick={() => console.log("button 3 - agents")}
+            onClick={() => showAgents(ship)}
             color="primary"
             aria-label="crew"
           >
@@ -96,13 +101,18 @@ export default function SelectedShip({ ship }) {
             <span className="s-ship-secondary-text-s">Flag:</span> {ship.flag}
           </p>
           <p className="s-ship-secondary-text">
-            <span className="s-ship-secondary-text-s">Position: </span> : LAT:
+            <span className="s-ship-secondary-text-s">Position</span> : LAT:
             {lat}, LNG: {lng}
           </p>
         </div>
         <div className="selected-ship-flag">
           <img className="flag" alt="flag" src={"/flags/" + flag + ".svg"} />
         </div>
+      </div> 
+      <p className="ship-secondary-text">{user.userName}</p>
+        <p className="ship-secondary-text">{user.suffix}</p>
+      <div className="ship-image-container">
+        <img className="ship-image-l" alt="Ship" src={shipName} />
       </div>
 
       {gridType === "staff" && <OfficeStaff ship={ship}></OfficeStaff>}

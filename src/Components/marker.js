@@ -1,7 +1,10 @@
 import L from "leaflet";
-import { Marker } from "react-leaflet";
+import { Marker, Popup } from "react-leaflet";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import "./Styles/marker.css";
 
-export default function landMarker({ position, iconType }) {
+export default function landMarker({ position, iconType, agent }) {
   return (
     <Marker
       draggable={true}
@@ -10,13 +13,43 @@ export default function landMarker({ position, iconType }) {
         new L.Icon({
           iconUrl: "/icons/" + iconType + ".svg",
           iconSize: new L.Point(22, 22),
-          className: "marker-icon-" + iconType,
+          className: "marker-v marker-icon-" + iconType,
         })
       }
     >
-      {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
-        <span>Office</span>
-      </Tooltip> */}
+      <Popup className="popup" offset={[0, -30]}>
+        <Card className="popup-card" style={{ padding: 0, margin: 0 }}>
+          {iconType === "Agent" ? (
+            <div>
+              <img
+                className="popup-card-image"
+                src="/deco/agent.jpg"
+                alt="agent"
+              />
+              {agent && (
+                <CardContent style={{ padding: 0, margin: 0 }}>
+                  <p className="popup-text-title">{agent.company}</p>
+                  <p className="popup-text">{agent.port}</p>
+                  <p className="popup-text">{agent.pic}</p>
+                  <p className="popup-text">{agent.phone}</p>
+                  <p className="popup-text">{agent.email}</p>
+                </CardContent>
+              )}
+            </div>
+          ) : (
+            <div>
+              <img className="popup-card-image" src="/deco/D.jpg" alt="docs" />
+              <CardContent style={{ padding: 0, margin: 0 }}>
+                <p className="popup-text-title">Loading</p>
+                <p className="popup-text">Loading: Bremerhaven</p>
+                <p className="popup-text">Discharging: Tallinn</p>
+                <p className="popup-text">Cargo: Gas Turbines 3 pcs</p>
+                <p className="popup-text">Client: Rolls Royce</p>
+              </CardContent>
+            </div>
+          )}
+        </Card>
+      </Popup>
     </Marker>
   );
 }

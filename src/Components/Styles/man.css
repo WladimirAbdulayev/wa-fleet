@@ -15,15 +15,30 @@
   height: 250px;
 }
 
+.man-secondary-text-center-rank
+{
+  position: absolute;
+  top: 203px;
+  margin: 4px;
+  font-size: 0.9rem;
+  color:white;
+  width: 130px;
+  background-color:  #1d35578c;
+}
 .man-secondary-text-center
 {
   position: absolute;
   top: 220px;
   margin: 4px;
-  font-size: 0.8em;
-  color:white;
-  background-color:  #1d3557a2;
+  font-size: 0.9rem;
+  color:  #1D3557;
+  width: 130px;
+  background-color: rgba(255, 255, 255, 0.556);
+
 }
+
+
+
 
 .man-nav{
   display: flex;

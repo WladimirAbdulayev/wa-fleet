@@ -7,7 +7,6 @@
  .man-title-container{ 
   width: 100%;
   display: flex;
-  margin: 10px;
   justify-content:left;
   background-image: url('../../Assets/deco/bg/bg-texture.svg'); }
 
@@ -20,7 +19,11 @@
  } */
 
 .man-image-e{
-  height: 92%;
+  height: 308px;
+  border: white solid 1px;
+  border-radius: 0.3em;  
+  overflow: hidden;
+
 }
 
  .man-details{

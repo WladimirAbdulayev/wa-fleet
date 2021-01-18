@@ -1,54 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { PieChart, Pie, ResponsiveContainer } from "recharts";
-import Stat from "../Data/stat";
+// import Title from "./title.js";
 
-import Title from "./title.js";
+export default function Chart({ data }) {
+  // useEffect(() => {
+  //   SetData(Stat());
+  // }, []);
 
-const data02 = [
-  {
-    name: "Group D",
-    value: 9800,
-  },
-  {
-    name: "Group E",
-    value: 3908,
-  },
-  {
-    name: "Group F",
-    value: 4800,
-  },
-];
+  // const [data, SetData] = useState();
 
-export default function Chart() {
-  useEffect(() => {
-    SetData(Stat());
-  }, []);
-
-  const [data, SetData] = useState();
+  console.log("CHART: I have this data: ", data);
 
   return (
     <React.Fragment>
-      <Title>Crew Composition</Title>
+      {/* <Title>Crew Composition</Title> */}
       <ResponsiveContainer>
-        <PieChart width={730} height={400}>
+        <PieChart width={900} height={600}>
           <Pie
-            data={data02}
-            dataKey="value"
+            data={data}
+            dataKey="amt"
             nameKey="name"
             cx="50%"
             cy="50%"
-            outerRadius={100}
+            outerRadius={80}
+            opacity="0.6"
             fill="#8884d8"
+            label
           />
           <Pie
             data={data}
-            dataKey="value"
+            dataKey="uv"
             nameKey="name"
             cx="50%"
             cy="50%"
-            innerRadius={120}
-            outerRadius={160}
+            innerRadius={140}
+            outerRadius={180}
             fill="#82ca9d"
+          />
+          <Pie
+            data={data}
+            dataKey="pv"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius={180}
+            outerRadius={230}
+            fill="#8884d8"
+            opacity="0.4"
             label
           />
         </PieChart>

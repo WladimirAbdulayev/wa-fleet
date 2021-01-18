@@ -70,7 +70,7 @@ export default function DataGridDemo({ ship }) {
   return (
     <div
       style={{
-        height: "96%",
+        height: "76.4%",
         width: "96%",
         margin: 10,
         overflowX: "hidden",

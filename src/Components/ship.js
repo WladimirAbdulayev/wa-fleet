@@ -1,3 +1,4 @@
+
 import "./Styles/ship.css";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
@@ -7,6 +8,7 @@ import DirectionsBoatIcon from "@material-ui/icons/DirectionsBoat";
 import ArtTrackIcon from "@material-ui/icons/ArtTrack";
 import CenterFocusWeakIcon from "@material-ui/icons/CenterFocusWeak";
 import Tooltip from "@material-ui/core/Tooltip";
+
 
 import PeopleIcon from "@material-ui/icons/People";
 
@@ -20,11 +22,13 @@ export default function Ship({
 }) {
   const shipName = "/ships/" + ship.shipName + "_s.png";
 
+
   return (
     <div className="ship-container">
       <div className="ship-title-container">
         <p className="ship-primary-text">{ship.shipName}</p>
         <p className="ship-secondary-text">{ship.shipType}</p>
+
       </div>
 
       <div className="ship-image-container">
@@ -55,7 +59,7 @@ export default function Ship({
           <IconButton
             onClick={() => showShipOnMap(ship)}
             color="secondary"
-            aria-label="crew"
+            aria-label="on-map"
           >
             <CenterFocusWeakIcon fontSize="small" />
           </IconButton>
@@ -64,7 +68,7 @@ export default function Ship({
           <IconButton
             onClick={() => showShipVoyageOnMap(ship)}
             color="secondary"
-            aria-label="add an alarm"
+            aria-label="voyage-map"
           >
             <DirectionsBoatIcon fontSize="small" />
           </IconButton>
@@ -78,6 +82,7 @@ export default function Ship({
             <DvrIcon fontSize="small" />
           </IconButton>
         </Tooltip>
+       
       </div>
     </div>
   );

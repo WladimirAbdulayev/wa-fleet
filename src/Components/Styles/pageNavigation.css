@@ -4,3 +4,8 @@
   display: flex;
   justify-content:flex-end;
 }
+
+.context-text{
+  width: 26%;
+  margin: 8px 0px;
+}

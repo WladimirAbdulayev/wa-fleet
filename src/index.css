@@ -12,6 +12,7 @@
   --c9:  #09244be0; 
   --c10: #1d3557c2; 
   --c11: #274875; /*  */
+  height: 100%;
 }
 
 * {
@@ -22,6 +23,14 @@
   -webkit-box-sizing: border-box;
 }
 
+#root{
+  height: 100%;
+}
+
+html{
+  height: 100%;
+}
+
 body {
   font-family: 'Inter', 'Roboto', sans-serif;
   font-weight: 300;
@@ -30,6 +39,7 @@ body {
   color: white;
   background-color: var(--c9);
   background-image: url('./Assets/deco/bg/bg-graph-paper.svg');
+  height: 100%;
 }
 
 body::-webkit-scrollbar {

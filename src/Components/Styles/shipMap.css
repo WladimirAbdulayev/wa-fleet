@@ -1,6 +1,6 @@
 .ship-map-container{
   position: relative;
-  width: 100%;
+  width: 76%;
   height: 100%;
 }
 
@@ -15,21 +15,6 @@
   height: 200px;
 }
 
-.marker-icon-D {
-  background-color: transparent;
-  border: transparent 0 0;
-  color: green;
-}
-
-.marker-icon-Port {
-  border: transparent 0 0;
-}
-
-.marker-icon-W {
-  border: transparent 0 0;
-  fill:green;
-}
-
 .leaflet-container {
   background: #ddd;
   outline: 0;
@@ -42,10 +27,6 @@ border: transparent;
 .flag-icon{
   background-color: transparent;
   border: transparent 0 0;
-}
-
-.fa-city{
-  color: blue;
 }
 
 @media(max-width: 420px) {

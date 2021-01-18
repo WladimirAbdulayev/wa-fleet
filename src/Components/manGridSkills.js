@@ -51,11 +51,11 @@ export default function ManGridSkills({ crewMember }) {
       backgroundColor: pink[500],
     },
     blue: {
-      backgroundColor: blue[500],
+      backgroundColor: blue[900],
     },
     green: {
       color: "#fff",
-      backgroundColor: green[500],
+      backgroundColor: green[800],
     },
   });
 
@@ -87,8 +87,8 @@ export default function ManGridSkills({ crewMember }) {
               <CardActionArea style={{ padding: 4 }}>
                 <div className={classes.avatars}>
                   {/* {skillAvatar(selSkill.skill)} */}
-                  <Avatar className={classes.green}>{selSkill.grade}</Avatar>
-                  <Avatar className={classes.pink}>
+                  <Avatar className={classes.blue}>{selSkill.grade}</Avatar>
+                  <Avatar className={classes.green}>
                     <BeenhereTwoToneIcon />
                   </Avatar>
                 </div>
@@ -104,7 +104,7 @@ export default function ManGridSkills({ crewMember }) {
                       // setHover(newHover);
                     }}
                   />
-                  <Typography gutterBottom variant="h6">
+                  <Typography gutterBottom variant="h6" color="contrastText">
                     {selSkill.skill}
                   </Typography>
                   <Typography

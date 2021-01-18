@@ -8,6 +8,10 @@
   padding: 10px;
 }
 
+.ship-image-l{
+  width: 90%;
+  align-self: center;
+}
 
 
 .selected-ship-navbar{

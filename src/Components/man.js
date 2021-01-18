@@ -9,8 +9,9 @@ export default function Man({ man, showCrewMember }) {
   return (
     <div className="man-container">
       <img className="man-image-s" alt="man" src={manPic} />
+      <p className="man-secondary-text-center-rank">{man.rank}</p>
       <p className="man-secondary-text-center">
-        {man.rank} {man.firstName} {man.lastName}
+        {man.firstName} {man.lastName}
       </p>
 
       <div className="man-nav">

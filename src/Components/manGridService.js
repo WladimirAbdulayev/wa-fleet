@@ -5,27 +5,27 @@ import { IconButton } from "@material-ui/core";
 import DvrIcon from "@material-ui/icons/Dvr";
 
 const columns = [
-  { field: "id", headerName: "#", width: 5 },
+  { field: "id", headerName: "#", width: 60 },
   {
     field: "shipImage",
     headerName: "ship",
-    width: 140,
+    width: 160,
     renderCell: (params) => (
       <img
-        style={{ width: 100 }}
+        style={{ width: 120 }}
         alt="Ship"
         src={`/ships/${params.getValue("sShipName")}_s.png`}
       />
     ),
   },
-  { field: "sShipName", headerName: "Ship Name", width: 120 },
-  { field: "sRank", headerName: "Rank", width: 120 },
-  { field: "boc", headerName: "BOC", width: 120 },
-  { field: "eoc", headerName: "EOC", width: 120 },
+  { field: "sShipName", headerName: "Ship Name", width: 160 },
+  { field: "sRank", headerName: "Rank", width: 140 },
+  { field: "boc", headerName: "BOC", width: 140 },
+  { field: "eoc", headerName: "EOC", width: 140 },
   {
     field: "button",
-    headerName: "Button",
-    width: 60,
+    headerName: "Docs",
+    width: 70,
     renderCell: (params) => (
       <IconButton
         onClick={() =>
