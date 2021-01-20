@@ -2,12 +2,26 @@ export default function statistical() {
   console.log("statistical data!");
 }
 
+// --c1: #1D3557; /* PrussianBlue */
+// --c2: #457B9D; /* CeladonBlue */
+// --c3: #A8DADC; /* PowderBlue */
+// --c4: #F1FAEE; /* Honeydew */
+// --c5: #E63946; /* ImperialRed */
+// --c6: #2b2d46; /* SpaceCadet */
+// --c7: #D90429; /* AmaranthRed */
+// --c8: #f77f00; /* Orange */
+// --c9:  #09244be0;
+// --c10: #1d3557c2;
+// --c11: #274875; /*  */
+
 const data1 = [
   {
     name: "Group A",
     uv: 2600,
     pv: 500,
     amt: 3300,
+    color1: "#457B9D",
+    color2: "#D90429",
   },
   {
     name: "Group B",
@@ -41,6 +55,8 @@ const data2 = [
     uv: 1200,
     pv: 2300,
     amt: 1000,
+    color1: "#8884d8",
+    color2: "#82ca9d",
   },
   {
     name: "IFO 180",
@@ -74,6 +90,8 @@ const data3 = [
     uv: 2000,
     pv: 1200,
     amt: 600,
+    color1: "#1D3557",
+    color2: "#f77f00",
   },
   {
     name: "Rate B",
@@ -107,6 +125,8 @@ const data4 = [
     uv: 1100,
     pv: 500,
     amt: 200,
+    color1: "#8884d8",
+    color2: "#82ca9d",
   },
   {
     name: "Bulk",
@@ -140,6 +160,8 @@ const data5 = [
     uv: 4000,
     pv: 2400,
     amt: 2400,
+    color1: "#8884d8",
+    color2: "#82ca9d",
   },
   {
     name: "Page 5B",

@@ -16,7 +16,7 @@ import {
 } from "react-leaflet";
 
 const ShipMap = ({ ships, shipOnMap, showShip, shipVoyageOnMap, agents }) => {
-  const position = [56.15, 6];
+  const position = [53.45, 5.45];
   let mapZoom = 6;
 
   function ShowShip() {

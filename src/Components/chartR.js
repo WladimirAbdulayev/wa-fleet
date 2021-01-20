@@ -24,7 +24,7 @@ export default function Chart({ data }) {
             cy="50%"
             outerRadius={80}
             opacity="0.6"
-            fill="#8884d8"
+            fill={data[0].color2}
             label
           />
           <Pie
@@ -35,7 +35,8 @@ export default function Chart({ data }) {
             cy="50%"
             innerRadius={140}
             outerRadius={180}
-            fill="#82ca9d"
+            fill={data[0].color1}
+            opacity="0.5"
           />
           <Pie
             data={data}
@@ -45,7 +46,7 @@ export default function Chart({ data }) {
             cy="50%"
             innerRadius={180}
             outerRadius={230}
-            fill="#8884d8"
+            fill={data[0].color2}
             opacity="0.4"
             label
           />

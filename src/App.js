@@ -6,6 +6,7 @@ import ShipMap from "./Components/shipMap";
 import SelectedShip from "./Components/selectedShip";
 import Stats from "./Containers/stats";
 import Orga from "./Containers/orga";
+import Tech from "./Containers/tech";
 import ShipList from "./Containers/shipList";
 import Desk from "./Containers/desk";
 import DeskSide from "./Containers/deskSide";
@@ -35,7 +36,7 @@ function App() {
 
   /* 
     - runs on second render
-    - for ajax requests
+    - good for ajax requests
     - return = clean up function
     useEffect(() => {
       do something
@@ -154,6 +155,9 @@ function App() {
               <Button style={{ color: "white" }} component={Link} to="/orga">
                 Orga
               </Button>
+              <Button style={{ color: "white" }} component={Link} to="/tech">
+                Tech
+              </Button>
             </nav>
             <div className="stats-container">
               <Switch>
@@ -184,6 +188,9 @@ function App() {
                   </div>
                   <PageNavigation changePage={changePage}></PageNavigation>
                 </Route>
+                <Route path="/tech">
+                  <Tech></Tech>
+                </Route>
 
                 <Route path="/">
                   <div ref={myRef0}></div>
@@ -206,7 +213,6 @@ function App() {
                           <SelectedShip ship={ship} showAgents={showAgents} />
                         )}
                       </div>
-
                       <ShipList
                         ships={ships}
                         showShipVoyageOnMap={showShipVoyageOnMap}

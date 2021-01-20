@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Crew from "../Data/dataCrew";
 import { IconButton, Avatar } from "@material-ui/core";
 import PageviewIcon from "@material-ui/icons/Pageview";
+import SwapHorizontalCircleIcon from "@material-ui/icons/SwapHorizontalCircle";
 
 /* function getFileName(params) {
   const fileName = `/avatars/${params.getValue("lastName")}.jpg`;
@@ -39,7 +40,14 @@ const columns = [
         color="primary"
         aria-label="crew"
       >
-        <PageviewIcon fontSize="small" />
+        {params.getValue("id") === 3 ||
+        params.getValue("id") === 5 ||
+        params.getValue("id") === 9 ||
+        params.getValue("id") === 10 ? (
+          <SwapHorizontalCircleIcon style={{ color: "red" }} fontSize="small" />
+        ) : (
+          <PageviewIcon fontSize="small" />
+        )}
       </IconButton>
     ),
   },

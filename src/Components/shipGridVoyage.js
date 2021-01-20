@@ -79,7 +79,7 @@ export default function DataGridDemo({ ship }) {
   }
 
   return (
-    <div style={{ height: 320, width: "96%", margin: 10 }}>
+    <div style={{ height: 360, width: "96%", margin: 10 }}>
       <DataGrid
         rowHeight={40}
         className={[classes.color, classes.typography]}

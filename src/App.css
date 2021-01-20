@@ -28,6 +28,9 @@
 .with-bg{
   background-image: url('./Assets/deco/bg/bg-texture.svg');
 }
+.with-v{
+  background-image: url('./Assets/deco/bg/bg-texture.svg');
+}
 
 .primary-text {
   font-weight: 300;

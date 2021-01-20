@@ -1,0 +1,41 @@
+.tech-container{
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient( 
+    to right bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.8)) , 
+    url('../../Assets/deco/bg/Vitruvian.jpg');
+    background-position: center;
+
+    place-items: center;
+    overflow: auto;
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.tech-text{
+  margin-bottom: 30px;
+}
+
+.tech-card{
+  height: 454px;
+  width: 400px;
+display: flex;
+flex-direction: column;
+justify-self: center;
+}
+.tech-cardF{
+  margin-top: 80px;
+}
+
+.tech-image{
+ width: 390px;
+}
+
+.tech-image-container{
+  width: 400px;
+}
