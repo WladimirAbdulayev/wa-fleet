@@ -5,13 +5,14 @@ It also contains a section for graphical presentation of statisctical and analyt
 
 # How does it work?
 
-In the dashboard you find the vessel of the fleet.
-After selecting a vessel you get a list of all features such as voayge mapping, crew overview, vessel fetails, office stuff etc.
+In the dashboard you find vessels of the fleet, interactive map and details section.
+You can locate any vessel on the map, display voyage and voayge details.
+After selecting a particular vessel you get access to additional features such as crew overview, vessel fetails, office staff etc.
 
 <h1 style="text-align: center">Landing</h1>
 <p>Select the section of the Application</p>
 <div style="width: 100%; display:flex; justify-content:space-evenly; flex-wrap: wrap; margin-bottom:10">
-  <img src="ReadmeFiles/fleet-landing.jpg" alt="Dashboard" width="800"/>
+  <img src="readmeFiles/fleet-landing.jpg" alt="Dashboard" width="800"/>
 </div>
 &nbsp;
 &nbsp;
