@@ -142,65 +142,64 @@ function App() {
   return (
     <ShipContext.Provider value={ship}>
       <UserContext.Provider value={userState}>
-        <div className="app-container">
+        <div className='app-container'>
           <Router>
-            <nav className="navbar-top">
+            <nav className='navbar-top'>
               <AppsIcon style={{ margin: 5 }}></AppsIcon>
-              <Button style={{ color: "white" }} component={Link} to="/">
+              <Button style={{ color: "white" }} component={Link} to='/'>
                 Home
               </Button>
-              <Button style={{ color: "white" }} component={Link} to="/stats">
+              <Button style={{ color: "white" }} component={Link} to='/stats'>
                 Stats
               </Button>
-              <Button style={{ color: "white" }} component={Link} to="/orga">
+              <Button style={{ color: "white" }} component={Link} to='/orga'>
                 Orga
               </Button>
-              <Button style={{ color: "white" }} component={Link} to="/tech">
+              <Button style={{ color: "white" }} component={Link} to='/tech'>
                 Tech
               </Button>
             </nav>
-            <div className="stats-container">
+            <div className='stats-container'>
               <Switch>
-                <Route path="/stats">
+                <Route path='/stats'>
                   <div
-                    className="stats-block"
+                    className='stats-block'
                     style={{
                       backgroundImage:
                         "linear-gradient(to right bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) ), url('/deco/bg_stats.jpg')",
                     }}
                   >
                     <Stats
-                      blockName="S T A T S"
+                      blockName='S T A T S'
                       statTools={statTools}
                       handleMainMenu={handleMainMenu}
                       shipStats={shipStats}
                     ></Stats>
                   </div>
                 </Route>
-                <Route path="/orga">
+                <Route path='/orga'>
                   <div>
                     <Orga
-                      blockName="Orga"
+                      blockName='Orga'
                       statTools={statTools}
                       handleMainMenu={handleMainMenu}
                       shipStats={shipStats}
                     ></Orga>
                   </div>
-                  <PageNavigation changePage={changePage}></PageNavigation>
                 </Route>
-                <Route path="/tech">
+                <Route path='/tech'>
                   <Tech></Tech>
                 </Route>
 
-                <Route path="/">
+                <Route path='/'>
                   <div ref={myRef0}></div>
-                  <div className="enter-ship-crew">
+                  <div className='enter-ship-crew'>
                     <Enter
                       mainTools={mainTools}
                       handleMainMenu={handleMainMenu}
                     ></Enter>
-                    <div className="ship-block">
-                      <div className="map-ship-block">
+                    <div className='ship-block'>
+                      <div className='map-ship-block'>
                         <ShipMap
                           ships={ships}
                           shipOnMap={shipOnMap}
@@ -225,15 +224,15 @@ function App() {
                     </div>
                     <div ref={myRef2}></div>
 
-                    <div className="desk-block">
-                      <div className="item-container desk-container">
+                    <div className='desk-block'>
+                      <div className='item-container desk-container'>
                         <Desk
                           men={crew}
                           showCrewMember={showCrewMember}
                           ship={ship}
                         ></Desk>
                       </div>
-                      <div className="item-container desk-side-container">
+                      <div className='item-container desk-side-container'>
                         {crewMember === undefined ||
                         crewMember.length === 0 ? null : (
                           <DeskSide crewMember={crewMember} />

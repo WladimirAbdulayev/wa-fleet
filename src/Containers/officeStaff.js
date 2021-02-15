@@ -11,8 +11,8 @@ import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   large: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   inline: {
     display: "inline",
@@ -29,15 +29,15 @@ export default function CustomizedTimeline({ ship }) {
 
   if (techStaff.length > 0) {
     return (
-      <div className="item-block-container">
-        <List component="nav" aria-label="main mailbox folders">
+      <div className='item-block-container'>
+        <List component='nav' aria-label='main mailbox folders'>
           {techStaff.map(function (staff) {
             return (
               <ListItem>
                 <ListItemAvatar>
                   <Avatar
                     className={classes.large}
-                    alt="Office Staff Name"
+                    alt='Office Staff Name'
                     src={`/officeStaff/${staff.firstName}_${staff.lastName}.jpg`}
                   ></Avatar>
                 </ListItemAvatar>
@@ -47,8 +47,8 @@ export default function CustomizedTimeline({ ship }) {
                   secondary={
                     <React.Fragment>
                       <Typography
-                        component="span"
-                        variant="body2"
+                        component='span'
+                        variant='body2'
                         className={classes.inline}
                         style={{ color: "#457B9D" }}
                       >
@@ -56,8 +56,8 @@ export default function CustomizedTimeline({ ship }) {
                       </Typography>
                       <p></p>
                       <Typography
-                        component="span"
-                        variant="body2"
+                        component='span'
+                        variant='body2'
                         className={classes.inline}
                         style={{ color: "white" }}
                       >
