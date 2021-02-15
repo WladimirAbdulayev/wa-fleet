@@ -9,32 +9,44 @@ In the dashboard you find the vessel of the fleet.
 After selecting a vessel you get a list of all features such as voayge mapping, crew overview, vessel fetails, office stuff etc.
 
 <h1 style="text-align: center">Landing</h1>
+<p>Select the section of the Application</p>
 <div style="width: 100%; display:flex; justify-content:space-evenly; flex-wrap: wrap; margin-bottom:10">
-  <img src="ReadmeFiles/Landing.jpg" alt="Dashboard" width="800"/>
+  <img src="ReadmeFiles/fleet-landing.jpg" alt="Dashboard" width="800"/>
 </div>
 &nbsp;
 &nbsp;
 
 <h1 style="text-align: center">Main</h1>
+<p>Select the ship</p>
+<li>display voyage</li>
+<li>display voyage details</li>
+<li>show voyage on the map</li>
+<li>display office staff</li>
+<li>display crew</li>
+<li>agent network</li>
 <div style="width: 100%; display:flex; justify-content:space-evenly; flex-wrap: wrap; margin-bottom:10">
-    <img src="ReadmeFiles/Landing.jpg" alt="Dashboard" width="800"/>
+  	<img src="readmeFiles/fleet-main-1.jpg" alt="Main-1" width="800"/> 
+    <img src="readmeFiles/fleet-main-2.jpg" alt="Main-2" width="800"/>
 </div>
 &nbsp;
 &nbsp;
 
 <h1 style="text-align: center">Crew</h1>
+<p>Full Crew Overview</p>
+<li>display crewmember details</li>
+<li>skills section</li>
+<li>sea-going records</li>
 <div style="width: 100%; display:flex; justify-content:space-evenly; flex-wrap: wrap; margin-bottom:10">
-    <img src="ReadmeFiles/Landing.jpg" alt="Dashboard" width="800"/>
+    <img src="readmeFiles/fleet-crew-1.jpg" alt="Crew" width="800"/>
 </div>
 <h1 style="text-align: center">Stats</h1>
+<p>Fleet and vessel statistics and analytics</p>
 <div style="width: 100%; display:flex; justify-content:space-evenly; flex-wrap: wrap; margin-bottom:10">
-    <img src="ReadmeFiles/Landing.jpg" alt="Dashboard" width="800"/>
+    <img src="readmeFiles/fleet-stats-1.jpg" alt="Stats" width="800"/>
 </div>
 &nbsp;
 &nbsp;
 
-# Our collaborators:
+# Author:
+
 - **[Wladimir Abdulayev](https://github.com/WladimirAbdulayev)**
-
-
-
