@@ -1,4 +1,4 @@
-# Trademon
+# Fleet (Flotte)
 
 Fleet (Flotte) is a prototype of interactive PWA for Fleet Management featuring fleet, voyage (including AIS positions), crew overviews.
 It also contains a section for graphical presentation of statisctical and analytical data.
