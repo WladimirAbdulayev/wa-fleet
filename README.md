@@ -1,13 +1,13 @@
 # Fleet (Flotte)
 
 Fleet (Flotte) is a prototype of interactive PWA for Fleet Management featuring fleet, voyage (including AIS positions), crew overviews.
-It also contains a section for graphical presentation of statisctical and analytical data.
+It also contains a section for graphical presentation of statistical and analytical data.
 
 # How does it work?
 
-In the dashboard you find vessels of the fleet, interactive map and details section.
-You can locate any vessel on the map, display voyage and voayge details.
-After selecting a particular vessel you get access to additional features such as crew overview, vessel fetails, office staff etc.
+IIn the dashboard you find vessels of the fleet, interactive map and details section.
+You can locate any vessel on the map, display voyage and voyage details.
+After selecting a particular vessel you get access to additional features such as crew overview, vessel details, office staff etc.
 
 <h1 style="text-align: center">Landing</h1>
 <p>Select the section of the Application</p>
